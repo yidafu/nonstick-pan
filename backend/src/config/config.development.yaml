@@ -1,0 +1,5 @@
+database:
+ - user: root
+ - password: ydfhs123
+ - port: 3006
+ - host: 127.0.0.1
