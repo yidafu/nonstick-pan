@@ -40,8 +40,8 @@ CREATE TABLE `vs_components` (
   `is_lock` TINYINT NOT NULL DEFAULT 0 COMMENT '是否锁定组件',
   `is_lock_aspect_ratio` TINYINT NOT NULL DEFAULT 0 COMMENT '是否锁定组件横纵比',
 
-  `category` varchar(32) NOT NULL COMMENT '组件所属一级分类',
-  `sub_category` varchar(32) NOT NULL COMMENT '组件所属二级分类',
+  `category` varchar(32) NOT NULL DEFAULT 'unkown' COMMENT '组件所属一级分类',
+  `sub_category` varchar(32) NOT NULL DEFAULT '' COMMENT '组件所属二级分类',
 
   `style_config` JSON NOT NULL  COMMENT '样式配置',
   `request_config` JSON NOT NULL  COMMENT '数据请求配置',

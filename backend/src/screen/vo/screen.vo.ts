@@ -1,8 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsBoolean, IsInt, IsString } from 'class-validator';
+import { IsString, IsInt, IsBoolean } from 'class-validator';
 import { EFillType } from 'common';
 
-export class CreateScreenDto {
+import { ScreenEntity } from '../entity/screen.entity';
+
+export class ScreenVo {
+  @ApiProperty()
+    id: string;
+
   @ApiProperty()
   @IsString()
     name: string;
@@ -38,4 +43,19 @@ export class CreateScreenDto {
   @ApiProperty({ required: false })
   @IsBoolean()
     isPublished: boolean;
+
+  @ApiProperty()
+    createdAt: string;
+
+  @ApiProperty()
+    updatedAt: string;
+
+  constructor(screen: ScreenEntity) {
+    Object.assign(this, screen);
+    this.id = String(screen.id);
+  }
+
+  static convert(screen: ScreenEntity): ScreenVo {
+    return new ScreenVo(screen);
+  }
 }

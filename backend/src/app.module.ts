@@ -1,12 +1,13 @@
-import { Module } from '@nestjs/common';
+import { Logger, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { ComponentModule } from './component/component.module';
+import { ComponentEntity } from './component/entity/component.entity';
 import config from './config';
-import { Screen } from './screen/entity/screen.entity';
-
+import { ScreenEntity } from './screen/entity/screen.entity';
 import { ScreenModule } from './screen/screen.module';
 
 @Module({
@@ -22,11 +23,13 @@ import { ScreenModule } from './screen/screen.module';
       username: 'root',
       password: 'ydfhs123',
       database: 'visualization_screen',
-      entities: [Screen],
+      entities: [ScreenEntity, ComponentEntity],
+      logging: true,
     }),
     ScreenModule,
+    ComponentModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, Logger],
 })
 export class AppModule {}

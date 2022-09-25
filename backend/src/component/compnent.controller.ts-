@@ -1,0 +1,153 @@
+import {
+  Body, Controller, Get, Param, Patch, Post, Query,
+} from '@nestjs/common';
+import {
+  ApiBody, ApiOperation, ApiParam, ApiQuery, ApiResponse, ApiTags,
+} from '@nestjs/swagger';
+
+import { ComponentService } from './component.service';
+import { CreateComponentDto } from './dto/create-component.dto';
+import { QueryComponentDto } from './dto/query-component.dto';
+import { UpdateComponentDot } from './dto/update-screeen.dto';
+import { ComponentVo } from './vo/component.vo';
+
+@Controller('component')
+export class ComponentController {
+  constructor(
+    private componentSerivce: ComponentService,
+  ) {}
+
+  @Get('all')
+  @ApiTags('component')
+  @ApiOperation({ summary: '获取大屏列表', description: '没有分页功能' })
+  @ApiQuery({
+    description: '是否是模板',
+    name: 'isTemplate',
+    type: Boolean,
+  })
+  @ApiQuery({
+    description: '是否已发布',
+    name: 'isPublished',
+    type: Boolean,
+  })
+  @ApiResponse({
+    status: 200,
+    description: '大屏列表',
+    isArray: true,
+    type: ComponentVo,
+    content: {
+      base: {
+        example: {
+          id: '1',
+          name: '测试大屏',
+          width: 1920,
+          height: 1080,
+          backgroupColor: '',
+          backgroupImage: '',
+          snapshotUrl: '',
+          fillType: 1,
+          isPublished: false,
+          isTemplate: false,
+          createdAt: '2022-09-24T16:51:09.937Z',
+          updatedAt: '2022-09-24T16:51:09.937Z',
+        },
+      },
+    },
+  })
+  async findAll(@Query() query: QueryComponentDto) {
+    const allComponents = await this.componentSerivce.findAll(query);
+    return allComponents.map(ComponentVo.convert);
+  }
+
+  @Get(':componentId')
+  @ApiTags('component')
+  @ApiOperation({ summary: '根据ID获取大屏' })
+  @ApiParam({
+    name: 'componentId',
+    description: '大屏ID',
+    type: Number,
+  })
+  @ApiResponse({
+    status: 200,
+    description: '大屏数据',
+    type: ComponentVo,
+  })
+  async getById(@Param('componentId') componentId: number) {
+    const component = await this.componentSerivce.findById(componentId);
+    return ComponentVo.convert(component);
+  }
+
+  @Post()
+  @ApiTags('component')
+  @ApiOperation({
+    summary: '创建大屏',
+  })
+  @ApiBody({
+    description: '要创建大屏数据',
+    type: CreateComponentDto,
+    examples: {
+      base: {
+        summary: '最简单场景',
+        description: '默认只需要传一个 name 字段即可',
+        value: { name: '测试大屏' },
+      },
+      full: {
+        summary: '完整参数',
+        description: '',
+        value: {
+          name: '测试大屏',
+          width: 1920,
+          height: 1080,
+          backgroupColor: '',
+          backgroupImage: '',
+          snapshotUrl: '',
+          fillType: 0,
+          isPublished: false,
+          isTemplate: false,
+        },
+      },
+    },
+  })
+  @ApiResponse({
+    status: 200,
+    description: '创建好的大屏实例',
+    type: ComponentVo,
+  })
+  async createComponent(@Body() createComponentDto: CreateComponentDto) {
+    const component = await this.componentSerivce.create(createComponentDto);
+    return ComponentVo.convert(component);
+  }
+
+  @Patch(':componentId')
+  @ApiTags('component')
+  @ApiOperation({
+    summary: '更新单个大屏数据',
+  })
+  @ApiParam({
+    name: 'componentId',
+    description: '大屏ID',
+    type: Number,
+  })
+  @ApiBody({
+    description: '需要更新大屏数据',
+    type: UpdateComponentDot,
+    examples: {
+      base: {
+        value: { name: '新的大屏名称', width: 100 },
+      },
+    },
+  })
+  @ApiResponse({
+    status: 200,
+    description: '更新后的大屏实例',
+    type: ComponentVo,
+  })
+  async updateComponentById(
+  @Param('componentId') componentId: number,
+    @Body() updateComponentDto: UpdateComponentDot,
+  ) {
+    await this.componentSerivce.updataById(componentId, updateComponentDto);
+    const component = await this.componentSerivce.findById(componentId);
+    return ComponentVo.convert(component);
+  }
+}
