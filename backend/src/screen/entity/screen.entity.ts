@@ -23,12 +23,18 @@ export class Screen {
   @Column({ name: 'snapshot_url' })
     snapshotUrl: string;
 
-  @Column({ name: 'is_published' })
+  @Column({ name: 'fill_type' })
     fillType: number;
 
-  @Column({ name: 'is_template', default: false })
+  @Column({ name: 'is_published', default: false })
     isPublished: boolean;
 
   @Column({ name: 'is_template', default: false })
     isTemplate: boolean;
+
+  @Column({ name: 'created_at' })
+    createdAt: Date;
+
+  @Column({ name: 'updated_at' })
+    updatedAt: Date;
 }

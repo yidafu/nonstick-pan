@@ -6,10 +6,12 @@ importers:
     specifiers:
       '@pure-org/tsconfig': ^0.2.7
       eslint-scope: ^5.1.1
+      typescript: ^4.7.4
     dependencies:
       eslint-scope: 5.1.1
     devDependencies:
       '@pure-org/tsconfig': 0.2.7
+      typescript: 4.8.3
 
   backend:
     specifiers:
@@ -19,6 +21,7 @@ importers:
       '@nestjs/core': ^9.0.0
       '@nestjs/platform-express': ^9.0.0
       '@nestjs/schematics': ^9.0.0
+      '@nestjs/swagger': ^6.1.2
       '@nestjs/testing': ^9.0.0
       '@nestjs/typeorm': ^9.0.1
       '@pure-org/eslint-config-water': ^0.2.7
@@ -29,6 +32,7 @@ importers:
       '@types/lodash': ^4.14.185
       '@types/node': ^16.11.47
       '@types/supertest': ^2.0.11
+      class-validator: ^0.13.2
       husky: ^8.0.1
       jest: 28.1.3
       js-yaml: ^4.1.0
@@ -48,11 +52,13 @@ importers:
       typeorm: ^0.3.10
       typescript: ^4.7.4
     dependencies:
-      '@nestjs/common': 9.1.2_j5hagqx4mwzscud4kyjdvubauy
+      '@nestjs/common': 9.1.2_c3ywp5uae7mfm5pv3l6tu7kcju
       '@nestjs/config': 2.2.0_uuxozj22b7txoqlrlgrj6jirny
       '@nestjs/core': 9.1.2_foclggtudvr6cnfc5hz7ukfode
       '@nestjs/platform-express': 9.1.2_umdjpi6fqr4wvw73r3mhthbyle
+      '@nestjs/swagger': 6.1.2_7xg7qfk5htt5uysomnutotrlf4
       '@nestjs/typeorm': 9.0.1_tmxlb3yhjw2abskzijl7fav4b4
+      class-validator: 0.13.2
       js-yaml: 4.1.0
       lodash: 4.17.21
       mysql2: 2.3.3
@@ -104,11 +110,11 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
-      '@pure-org/cli': 0.2.7-2
-      '@pure-org/eslint-config-water': 0.2.7-2_typescript@4.8.3
-      '@pure-org/stylelint-config-water': 0.2.7-2
-      '@pure-org/tsconfig': 0.2.7-2
-      '@pure-org/water-preset-react': 0.2.7-2_biqbaboplfbrettd7655fr4n2y
+      '@pure-org/cli': 0.2.7
+      '@pure-org/eslint-config-water': 0.2.7_typescript@4.8.3
+      '@pure-org/stylelint-config-water': 0.2.7
+      '@pure-org/tsconfig': 0.2.7
+      '@pure-org/water-preset-react': 0.2.7_biqbaboplfbrettd7655fr4n2y
       '@types/react': 18.0.21
       '@types/react-dom': 18.0.6
       '@vitejs/plugin-react': 2.1.0_vite@3.1.3
@@ -1171,7 +1177,7 @@ packages:
       - webpack-cli
     dev: true
 
-  /@nestjs/common/9.1.2_j5hagqx4mwzscud4kyjdvubauy:
+  /@nestjs/common/9.1.2_c3ywp5uae7mfm5pv3l6tu7kcju:
     resolution: {integrity: sha512-zpF4DaLvvsCVqfrf9LJfSeYP+SBCWCFbOCTOmEZ5Gs6Hralia6s2kS+CSicJKx8IpnyC6ZReuqdTbjcPl4yunA==}
     peerDependencies:
       cache-manager: '*'
@@ -1187,6 +1193,7 @@ packages:
       class-validator:
         optional: true
     dependencies:
+      class-validator: 0.13.2
       iterare: 1.2.1
       reflect-metadata: 0.1.13
       rxjs: 7.5.6
@@ -1200,7 +1207,7 @@ packages:
       reflect-metadata: ^0.1.13
       rxjs: ^6.0.0 || ^7.2.0
     dependencies:
-      '@nestjs/common': 9.1.2_j5hagqx4mwzscud4kyjdvubauy
+      '@nestjs/common': 9.1.2_c3ywp5uae7mfm5pv3l6tu7kcju
       dotenv: 16.0.1
       dotenv-expand: 8.0.3
       lodash: 4.17.21
@@ -1227,7 +1234,7 @@ packages:
       '@nestjs/websockets':
         optional: true
     dependencies:
-      '@nestjs/common': 9.1.2_j5hagqx4mwzscud4kyjdvubauy
+      '@nestjs/common': 9.1.2_c3ywp5uae7mfm5pv3l6tu7kcju
       '@nestjs/platform-express': 9.1.2_umdjpi6fqr4wvw73r3mhthbyle
       '@nuxtjs/opencollective': 0.3.2
       fast-safe-stringify: 2.1.1
@@ -1241,13 +1248,31 @@ packages:
     transitivePeerDependencies:
       - encoding
 
+  /@nestjs/mapped-types/1.1.0_qy2wikrts7fz4j2me2rprydfte:
+    resolution: {integrity: sha512-+2kSly4P1QI+9eGt+/uGyPdEG1hVz7nbpqPHWZVYgoqz8eOHljpXPag+UCVRw9zo2XCu4sgNUIGe8Uk0+OvUQg==}
+    peerDependencies:
+      '@nestjs/common': ^7.0.8 || ^8.0.0 || ^9.0.0
+      class-transformer: ^0.2.0 || ^0.3.0 || ^0.4.0 || ^0.5.0
+      class-validator: ^0.11.1 || ^0.12.0 || ^0.13.0
+      reflect-metadata: ^0.1.12
+    peerDependenciesMeta:
+      class-transformer:
+        optional: true
+      class-validator:
+        optional: true
+    dependencies:
+      '@nestjs/common': 9.1.2_c3ywp5uae7mfm5pv3l6tu7kcju
+      class-validator: 0.13.2
+      reflect-metadata: 0.1.13
+    dev: false
+
   /@nestjs/platform-express/9.1.2_umdjpi6fqr4wvw73r3mhthbyle:
     resolution: {integrity: sha512-SlAG6nfEVSk+lQL1Z4kjLip2jJ+w4mc8cG5ccM3mN06gREYfJVayNuydPUYtoxP/QmzugQfO5+cNEdqdhCmSQw==}
     peerDependencies:
       '@nestjs/common': ^9.0.0
       '@nestjs/core': ^9.0.0
     dependencies:
-      '@nestjs/common': 9.1.2_j5hagqx4mwzscud4kyjdvubauy
+      '@nestjs/common': 9.1.2_c3ywp5uae7mfm5pv3l6tu7kcju
       '@nestjs/core': 9.1.2_foclggtudvr6cnfc5hz7ukfode
       body-parser: 1.20.0
       cors: 2.8.5
@@ -1287,6 +1312,30 @@ packages:
       - chokidar
     dev: true
 
+  /@nestjs/swagger/6.1.2_7xg7qfk5htt5uysomnutotrlf4:
+    resolution: {integrity: sha512-RU1DeTDyuN/lRXKFWaf7I9LYF34/ale3IIGeY3romAcXL/N9W0+50Ek3ou+Ajd5FqpLqzt7saYhnaQegVuU4UQ==}
+    peerDependencies:
+      '@fastify/static': ^6.0.0
+      '@nestjs/common': ^9.0.0
+      '@nestjs/core': ^9.0.0
+      reflect-metadata: ^0.1.12
+    peerDependenciesMeta:
+      '@fastify/static':
+        optional: true
+    dependencies:
+      '@nestjs/common': 9.1.2_c3ywp5uae7mfm5pv3l6tu7kcju
+      '@nestjs/core': 9.1.2_foclggtudvr6cnfc5hz7ukfode
+      '@nestjs/mapped-types': 1.1.0_qy2wikrts7fz4j2me2rprydfte
+      js-yaml: 4.1.0
+      lodash: 4.17.21
+      path-to-regexp: 3.2.0
+      reflect-metadata: 0.1.13
+      swagger-ui-dist: 4.14.0
+    transitivePeerDependencies:
+      - class-transformer
+      - class-validator
+    dev: false
+
   /@nestjs/testing/9.1.2_j2ls57gnkuuvs6xhnfklmsn2o4:
     resolution: {integrity: sha512-BfwERdTppE4oz6qxCNJVo0kaRH2FO7mipooedT2nDtYW3krGZ8978odmGdpVgNz1xwqKDH3Y/68frs5oW2CTZw==}
     peerDependencies:
@@ -1300,7 +1349,7 @@ packages:
       '@nestjs/platform-express':
         optional: true
     dependencies:
-      '@nestjs/common': 9.1.2_j5hagqx4mwzscud4kyjdvubauy
+      '@nestjs/common': 9.1.2_c3ywp5uae7mfm5pv3l6tu7kcju
       '@nestjs/core': 9.1.2_foclggtudvr6cnfc5hz7ukfode
       '@nestjs/platform-express': 9.1.2_umdjpi6fqr4wvw73r3mhthbyle
       tslib: 2.4.0
@@ -1315,7 +1364,7 @@ packages:
       rxjs: ^7.2.0
       typeorm: ^0.3.0
     dependencies:
-      '@nestjs/common': 9.1.2_j5hagqx4mwzscud4kyjdvubauy
+      '@nestjs/common': 9.1.2_c3ywp5uae7mfm5pv3l6tu7kcju
       '@nestjs/core': 9.1.2_foclggtudvr6cnfc5hz7ukfode
       reflect-metadata: 0.1.13
       rxjs: 7.5.6
@@ -1386,120 +1435,17 @@ packages:
       - webpack-cli
     dev: true
 
-  /@pure-org/api/0.2.7-2:
-    resolution: {integrity: sha512-aJUcyiheEEzGZ/sEjWqJdK+bbZxPdAPJnC/KLqZKGj5Kgu+ZWAfKzJoG5/iE9KigDtsTKuRdelci29wQU4IyUw==}
-    dependencies:
-      axios: 0.27.2_debug@4.3.4
-      chalk: 4.1.2
-      commander: 9.4.0
-      debug: 4.3.4
-      deepmerge: 4.2.2
-      is-plain-object: 5.0.0
-      lodash.merge: 4.6.2
-      minimist: 1.2.6
-      stringify-object: 3.3.0
-      vite: 3.1.3
-      webpack: 5.74.0
-      webpack-chain: 6.5.1
-      webpack-dev-server: 4.11.1_debug@4.3.4+webpack@5.74.0
-      webpack-merge: 5.8.0
-    transitivePeerDependencies:
-      - '@swc/core'
-      - bufferutil
-      - esbuild
-      - less
-      - sass
-      - stylus
-      - supports-color
-      - terser
-      - uglify-js
-      - utf-8-validate
-      - webpack-cli
-    dev: true
-
-  /@pure-org/cli/0.2.7-2:
-    resolution: {integrity: sha512-8KZlIlAT+UHTeOgH30UXUIx6EE9es7x43onaFZnxQyQU0zX/mSB09ikmRfYV9Qbartm81WOHwh7dXL2jkJhTtA==}
+  /@pure-org/cli/0.2.7:
+    resolution: {integrity: sha512-hIB46qFbShuF5+YeSf7TqAA7Hn+GashA627POWcVR5IeNNOCd9+D3T56C58vJ8gSE3X8VmFZUWPv+ZsUTtzcpw==}
     hasBin: true
     dependencies:
-      '@pure-org/api': 0.2.7-2
+      '@pure-org/api': 0.2.7
       commander: 9.4.0
       debug: 4.3.4
     transitivePeerDependencies:
       - '@swc/core'
       - bufferutil
       - esbuild
-      - less
-      - sass
-      - stylus
-      - supports-color
-      - terser
-      - uglify-js
-      - utf-8-validate
-      - webpack-cli
-    dev: true
-
-  /@pure-org/eslint-config-water/0.2.7-2_typescript@4.8.3:
-    resolution: {integrity: sha512-jdzXtlcE2yEJRrXErcTOHKCEZApB1Cwi09nSfdoqcszW+86D9w2BttHdTHtrUwGVTOCvWkLvpaOI/lZMBiOJjQ==}
-    peerDependencies:
-      '@typescript-eslint/eslint-plugin': ^5.30.7
-      eslint: ^8.20.0
-      typescript: ^4.7.4
-    dependencies:
-      '@pure-org/api': 0.2.7-2
-      '@typescript-eslint/parser': 5.38.0_typescript@4.8.3
-      eslint-config-airbnb: 19.0.4_3dtmers3rwhuw5g72ut4v7qnmy
-      eslint-config-airbnb-base: 15.0.0_fkfqfehjtk7sk2efaqbgxsuasa
-      eslint-config-airbnb-typescript: 17.0.0_4pv5vzw357ny3yvd4b3e7e5tbq
-      eslint-plugin-import: 2.26.0_okw6xx5qjyfhpzrnewspg4ahrm
-      eslint-plugin-jsx-a11y: 6.6.1
-      eslint-plugin-react: 7.31.8
-      eslint-plugin-react-hooks: 4.6.0
-      eslint-plugin-vue: 9.5.1
-      typescript: 4.8.3
-      vue-eslint-parser: 9.1.0
-    transitivePeerDependencies:
-      - '@swc/core'
-      - bufferutil
-      - esbuild
-      - eslint-import-resolver-typescript
-      - eslint-import-resolver-webpack
-      - less
-      - sass
-      - stylus
-      - supports-color
-      - terser
-      - uglify-js
-      - utf-8-validate
-      - webpack-cli
-    dev: true
-
-  /@pure-org/eslint-config-water/0.2.7-2_x2ukgxiyci4lfkhuv2ldo3vzd4:
-    resolution: {integrity: sha512-jdzXtlcE2yEJRrXErcTOHKCEZApB1Cwi09nSfdoqcszW+86D9w2BttHdTHtrUwGVTOCvWkLvpaOI/lZMBiOJjQ==}
-    peerDependencies:
-      '@typescript-eslint/eslint-plugin': ^5.30.7
-      eslint: ^8.20.0
-      typescript: ^4.7.4
-    dependencies:
-      '@pure-org/api': 0.2.7-2
-      '@typescript-eslint/eslint-plugin': 5.38.0_4gkcvl6qsi23tqqawfqgcwtp54
-      '@typescript-eslint/parser': 5.38.0_7ilbxdl5iguzcjriqqcg2m5cku
-      eslint: 8.24.0
-      eslint-config-airbnb: 19.0.4_rzrsifmdezkmskpzrsxhxsecxy
-      eslint-config-airbnb-base: 15.0.0_dg2pe6kqkrddxbf2funb723kue
-      eslint-config-airbnb-typescript: 17.0.0_gw5e4346mlj6wl5vrd2lqxe5q4
-      eslint-plugin-import: 2.26.0_2azyxy5wfmd73v3pbt5rvmgcsm
-      eslint-plugin-jsx-a11y: 6.6.1_eslint@8.24.0
-      eslint-plugin-react: 7.31.8_eslint@8.24.0
-      eslint-plugin-react-hooks: 4.6.0_eslint@8.24.0
-      eslint-plugin-vue: 9.5.1_eslint@8.24.0
-      typescript: 4.8.3
-      vue-eslint-parser: 9.1.0_eslint@8.24.0
-    transitivePeerDependencies:
-      - '@swc/core'
-      - bufferutil
-      - esbuild
-      - eslint-import-resolver-typescript
-      - eslint-import-resolver-webpack
       - less
       - sass
       - stylus
@@ -1582,8 +1528,8 @@ packages:
       - webpack-cli
     dev: true
 
-  /@pure-org/stylelint-config-water/0.2.7-2:
-    resolution: {integrity: sha512-3XI8MEsqt2JdSOCslCxMJxKGTFIfHNEsjdACkJtFX2cuUPoBRfrlzKTVlnVj00jn/Qk4LTzWLw4CIAA32SN1Yg==}
+  /@pure-org/stylelint-config-water/0.2.7:
+    resolution: {integrity: sha512-fJYJjz5uK1+wijDR3kYfVcYGGAdkdTZonDjHSKgavBrh+T2RT9fF6um9sEXOLhRZmXnvWt4OqBjPFfMODQoXzA==}
     peerDependencies:
       '@types/stylelint': ^14.0.0
       stylelint: '>=14.0.0'
@@ -1595,22 +1541,6 @@ packages:
       stylelint-config-standard-scss: 5.0.0_postcss@8.4.16
       stylelint-order: 5.0.0
       stylelint-scss: 4.3.0
-    dev: true
-
-  /@pure-org/stylelint-config-water/0.2.7-2_stylelint@14.12.1:
-    resolution: {integrity: sha512-3XI8MEsqt2JdSOCslCxMJxKGTFIfHNEsjdACkJtFX2cuUPoBRfrlzKTVlnVj00jn/Qk4LTzWLw4CIAA32SN1Yg==}
-    peerDependencies:
-      '@types/stylelint': ^14.0.0
-      stylelint: '>=14.0.0'
-    dependencies:
-      postcss: 8.4.16
-      postcss-html: 1.5.0
-      postcss-scss: 4.0.5_postcss@8.4.16
-      stylelint: 14.12.1
-      stylelint-config-recommended-vue: 1.4.0_kt2wnpkut4en7qamswpshuiu4m
-      stylelint-config-standard-scss: 5.0.0_nqmbdxq5redfjw6kdtxj73dev4
-      stylelint-order: 5.0.0_stylelint@14.12.1
-      stylelint-scss: 4.3.0_stylelint@14.12.1
     dev: true
 
   /@pure-org/stylelint-config-water/0.2.7_stylelint@14.12.1:
@@ -1631,12 +1561,6 @@ packages:
 
   /@pure-org/tsconfig/0.2.7:
     resolution: {integrity: sha512-p5WKjT7N2zHkk5V2DWROiLmsCc38MIarnXKhvc2FGSKQBDzcvx+qc60AYOXY7VVQ80Ef2GZyNPPMgEINpBOW7w==}
-    dependencies:
-      '@tsconfig/node16': 1.0.3
-    dev: true
-
-  /@pure-org/tsconfig/0.2.7-2:
-    resolution: {integrity: sha512-OW/aubkfr+02nP/UfhetZhn2f34Hi7mFa+trTX8xV9bHePzRuz+gEupnD/tn/yoGwONZI48DbyoHHOMSpAK8bg==}
     dependencies:
       '@tsconfig/node16': 1.0.3
     dev: true
@@ -1680,52 +1604,13 @@ packages:
       - webpack-cli
     dev: true
 
-  /@pure-org/water-plugin-lint/0.2.7-2:
-    resolution: {integrity: sha512-ZptI+0hVM/8BpogqIhhWsOwyi+bGMZR0vIrteOzzbHMn2fN96hIP1woJjylZX03Y7G4aBpDmzenFbZ9L29ij4A==}
-    dependencies:
-      '@commitlint/config-conventional': 17.1.0
-      '@commitlint/format': 17.0.0
-      '@commitlint/lint': 17.1.0
-      '@commitlint/load': 17.1.2
-      '@commitlint/read': 17.1.0
-      '@commitlint/types': 17.0.0
-      '@pure-org/api': 0.2.7-2
-      '@pure-org/eslint-config-water': 0.2.7-2_x2ukgxiyci4lfkhuv2ldo3vzd4
-      '@pure-org/stylelint-config-water': 0.2.7-2_stylelint@14.12.1
-      '@typescript-eslint/eslint-plugin': 5.38.0_4gkcvl6qsi23tqqawfqgcwtp54
-      '@typescript-eslint/parser': 5.38.0_7ilbxdl5iguzcjriqqcg2m5cku
-      chalk: 4.1.2
-      debug: 4.3.4
-      eslint: 8.24.0
-      ora: 5.4.1
-      postcss-html: 1.5.0
-      stylelint: 14.12.1
-      typescript: 4.8.3
-    transitivePeerDependencies:
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/stylelint'
-      - bufferutil
-      - esbuild
-      - eslint-import-resolver-typescript
-      - eslint-import-resolver-webpack
-      - less
-      - sass
-      - stylus
-      - supports-color
-      - terser
-      - uglify-js
-      - utf-8-validate
-      - webpack-cli
-    dev: true
-
-  /@pure-org/water-preset-react/0.2.7-2_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-VpNl0UMKrUzI+qAZzN2jmdo19+4t0y3LIloD/cBKuVFjfxuJlio86vWOAn2Df7iS1cUPUIAjn3AEdFNfZAr6wQ==}
+  /@pure-org/water-preset-react/0.2.7_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-ucJd9HH8xputjwN0shV/a1139bmAoPBrK58+sUwQxZv4/AIkjsdH3Gm3Ho5v0JQS17KRhHnLpVXefzm6IcQ6Rw==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@pure-org/water-plugin-lint': 0.2.7-2
+      '@pure-org/water-plugin-lint': 0.2.7
       '@vitejs/plugin-react': 2.1.0_vite@3.1.3
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -2879,6 +2764,12 @@ packages:
   /cjs-module-lexer/1.2.2:
     resolution: {integrity: sha512-cOU9usZw8/dXIXKtwa8pM0OTJQuJkxMN6w30csNRUerHfeQ5R6U3kkU/FtJeIf3M202OHfY2U8ccInBG7/xogA==}
     dev: true
+
+  /class-validator/0.13.2:
+    resolution: {integrity: sha512-yBUcQy07FPlGzUjoLuUfIOXzgynnQPPruyK1Ge2B74k9ROwnle1E+NxLWnUv5OLU8hA/qL5leAE9XnXq3byaBw==}
+    dependencies:
+      libphonenumber-js: 1.10.13
+      validator: 13.7.0
 
   /clean-stack/2.2.0:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==}
@@ -5867,6 +5758,9 @@ packages:
       type-check: 0.4.0
     dev: true
 
+  /libphonenumber-js/1.10.13:
+    resolution: {integrity: sha512-b74iyWmwb4GprAUPjPkJ11GTC7KX4Pd3onpJfKxYyY8y9Rbb4ERY47LvCMEDM09WD3thiLDMXtkfDK/AX+zT7Q==}
+
   /lilconfig/2.0.5:
     resolution: {integrity: sha512-xaYmXZtTHPAw5m+xLN8ab9C+3a8YmV3asNSPOATITbtwrfbwaLJj8h66H1WMIpALCkqsIzK3h7oQ+PdX+LQ9Eg==}
     engines: {node: '>=10'}
@@ -7809,6 +7703,10 @@ packages:
     resolution: {integrity: sha512-ovssysQTa+luh7A5Weu3Rta6FJlFBBbInjOh722LIt6klpU2/HtdUbszju/G4devcvk8PGt7FCLv5wftu3THUA==}
     dev: true
 
+  /swagger-ui-dist/4.14.0:
+    resolution: {integrity: sha512-TBzhheU15s+o54Cgk9qxuYcZMiqSm/SkvKnapoGHOF66kz0Y5aGjpzj5BT/vpBbn6rTPJ9tUYXQxuDWfsjiGMw==}
+    dev: false
+
   /symbol-observable/4.0.0:
     resolution: {integrity: sha512-b19dMThMV4HVFynSAM1++gBHAbk2Tc/osgLIBZMKsyqh34jb2e8Os7T6ZW/Bt3pJFdBTd2JwAnAAEQV7rSNvcQ==}
     engines: {node: '>=0.10'}
@@ -8315,6 +8213,10 @@ packages:
       spdx-correct: 3.1.1
       spdx-expression-parse: 3.0.1
     dev: true
+
+  /validator/13.7.0:
+    resolution: {integrity: sha512-nYXQLCBkpJ8X6ltALua9dRrZDHVYxjJ1wgskNt1lH9fzGjs3tgojGSCBjmEPwkWS1y29+DrizMTW19Pr9uB2nw==}
+    engines: {node: '>= 0.10'}
 
   /vary/1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}

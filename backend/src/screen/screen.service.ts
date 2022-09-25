@@ -1,7 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Screen } from 'src/entity/screen.entity';
+
 import { Repository } from 'typeorm';
+
+import { CreateScreenDto } from './dto/create-screen.dto';
+import { QueryScreeDto } from './dto/query-screen.dto';
+
+import { Screen } from '@/screen/entity/screen.entity';
 
 @Injectable()
 export class ScreenService {
@@ -9,7 +14,11 @@ export class ScreenService {
     @InjectRepository(Screen) private screenRepository: Repository<Screen>,
   ) {}
 
-  findAll(): Promise<Screen[]> {
-    return this.screenRepository.find();
+  findAll(query: QueryScreeDto): Promise<Screen[]> {
+    return this.screenRepository.find({ where: query });
+  }
+
+  create(dto: CreateScreenDto) {
+    return this.screenRepository.save(dto);
   }
 }

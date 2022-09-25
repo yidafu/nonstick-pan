@@ -5,7 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import config from './config';
-import { entityArray } from './entity';
+import { Screen } from './screen/entity/screen.entity';
+
 import { ScreenModule } from './screen/screen.module';
 
 @Module({
@@ -21,7 +22,7 @@ import { ScreenModule } from './screen/screen.module';
       username: 'root',
       password: 'ydfhs123',
       database: 'visualization_screen',
-      entities: entityArray,
+      entities: [Screen],
     }),
     ScreenModule,
   ],
