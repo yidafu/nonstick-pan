@@ -13,11 +13,18 @@
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "antd": "^4.23.2",
+    "axios": "^0.27.2",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.1",
-    "recoil": "^0.7.5"
+    "remesh": "^3.0.1",
+    "remesh-logger": "^3.0.0",
+    "remesh-react": "^3.0.0",
+    "remesh-redux-devtools": "^3.0.0",
+    "remesh-yjs": "^3.0.0",
+    "rxjs": "^7.2.0",
+    "yjs": "^13.5.41"
   },
   "devDependencies": {
     "@pure-org/cli": "^0.2.7",

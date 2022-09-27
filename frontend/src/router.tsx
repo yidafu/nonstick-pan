@@ -14,14 +14,18 @@ export interface IAppRoute {
 export const router: IAppRoute[] = [
   {
     index: true,
-    path: generateUrl('/screen'),
+    path: generateUrl('/screens'),
+    component: <ScreenPage />,
+  },
+  {
+    index: true,
+    path: generateUrl('/templates'),
     component: <ScreenPage />,
   },
   {
     path: generateUrl('/editor/:screenId'),
     component: <EditorPage />,
   },
-
   {
     path: '*',
     component: <NotFound />,

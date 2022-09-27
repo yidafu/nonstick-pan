@@ -7,7 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: ['error', 'warn', 'log'],
   });
-
+  app.enableCors();
   const config = new DocumentBuilder()
     .setTitle('Visualization Screen')
     .setDescription('Visualization Screen Backend API')
