@@ -1,4 +1,4 @@
-import { EFillType } from 'common';
+import { EFillType } from '@pan/common';
 import dayjs from 'dayjs';
 import {
   Entity, Column, PrimaryGeneratedColumn, UpdateDateColumn, CreateDateColumn,

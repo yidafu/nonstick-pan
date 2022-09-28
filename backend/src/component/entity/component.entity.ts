@@ -1,4 +1,4 @@
-import { IComponentIneractConfig, IComponentRequestConfig, IComponentStyleConfig } from 'common';
+import { IComponentIneractConfig, IComponentRequestConfig, IComponentStyleConfig } from '@pan/common';
 import dayjs from 'dayjs';
 import {
   Entity, Column, PrimaryGeneratedColumn, UpdateDateColumn, CreateDateColumn,
