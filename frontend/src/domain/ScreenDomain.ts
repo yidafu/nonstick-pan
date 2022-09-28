@@ -1,4 +1,4 @@
-import { IScreen } from 'common';
+import { IScreen } from '@pan/common';
 import { Remesh } from 'remesh';
 
 import { AsyncModule } from 'remesh/modules/async';

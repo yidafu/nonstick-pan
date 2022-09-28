@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import EditorPage from '@/pages/editor';
 import NotFound from '@/pages/not-found';
 import ScreenPage from '@/pages/screen';
-import { generateUrl } from '@/utils';
+import { gUrl } from '@/utils';
 
 export interface IAppRoute {
   path: string;
@@ -14,16 +14,16 @@ export interface IAppRoute {
 export const router: IAppRoute[] = [
   {
     index: true,
-    path: generateUrl('/screens'),
+    path: gUrl('/screens'),
     component: <ScreenPage />,
   },
   {
     index: true,
-    path: generateUrl('/templates'),
+    path: gUrl('/templates'),
     component: <ScreenPage />,
   },
   {
-    path: generateUrl('/editor/:screenId'),
+    path: gUrl('/editor/:screenId'),
     component: <EditorPage />,
   },
   {

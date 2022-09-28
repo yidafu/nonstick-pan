@@ -4,6 +4,7 @@
 
 body {
   --p-color: #18181c;
+  --p-action-color: rgba(255, 255, 255, 0.06);
   --p-bg-color: #101014;
   --p-border-color: rgba(255, 255, 255, 0.1);
   background-color: var(--p-bg-color);
@@ -12,7 +13,9 @@ body {
 .p-bg {
   background-color: var(--p-bg-color);
 }
-
+.p-bg-action {
+  background-color: var(--p-action-color);
+}
 .p-block {
   background-color: var(--p-color);
   border: 1px solid var(--p-border-color);
