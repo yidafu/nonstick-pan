@@ -1,5 +1,5 @@
 {
-  "name": "@pure-org/template-react",
+  "name": "@pan/frontend",
   "private": false,
   "version": "0.2.7-1",
   "scripts": {
@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
+    "@pan/common": "workspace:*",
     "antd": "^4.23.2",
     "axios": "^0.27.2",
     "normalize.css": "^8.0.1",

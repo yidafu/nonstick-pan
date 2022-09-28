@@ -1,4 +1,4 @@
-import { IScreen } from 'common';
+import { IScreen } from '@pan/common';
 
 import { GET } from './base';
 

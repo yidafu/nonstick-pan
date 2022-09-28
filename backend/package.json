@@ -1,5 +1,5 @@
 {
-  "name": "@pure-org/template-nestjs",
+  "name": "@pan/backend",
   "version": "0.2.7-2",
   "description": "",
   "author": "",
@@ -21,6 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@pan/common": "workspace:*",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",

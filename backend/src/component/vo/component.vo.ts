@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString, IsInt, IsBoolean } from 'class-validator';
-import { EFillType } from 'common';
+import { EFillType } from '@pan/common';
 
 import { ComponentEntity } from '../entity/component.entity';
 

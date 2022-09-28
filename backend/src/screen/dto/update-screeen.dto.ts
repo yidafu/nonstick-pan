@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsBoolean, IsInt, IsString } from 'class-validator';
-import { EFillType } from 'common';
+import { EFillType } from '@pan/common';
 
 export class UpdateScreenDot {
   @ApiProperty({ required: false })
