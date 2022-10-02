@@ -1,5 +1,5 @@
 import {
-  DashOutlined, CopyOutlined, EyeOutlined, ExportOutlined, DeleteOutlined,
+  DashOutlined,
 } from '@ant-design/icons';
 import { Dropdown, Button, Menu } from 'antd';
 import React, { useContext } from 'react';
@@ -35,7 +35,7 @@ const MENU_ITEMS = [
 ];
 
 interface IMoreOptionProps {
-  screeId: number;
+  // screeId: number;
 }
 const MoreMenu = (
   <Menu items={MENU_ITEMS} />

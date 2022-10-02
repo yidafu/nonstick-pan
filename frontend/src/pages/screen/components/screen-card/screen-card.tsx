@@ -27,10 +27,10 @@ export const ScreenCard: React.FC<IScreenCardProps> = function (props) {
         <div className="p-bg-action px-2 h-1/4 flex justify-between items-center">
           <span>{screen.name}</span>
           <div>
-            <Link to={gUrl(`/edtior/${screen.id}`)}>
+            <Link to={gUrl(`/editor/${screen.id}`)}>
               <Button className="mr-2" icon={<EditOutlined />} />
             </Link>
-            <MoreOption screeId={screen.id} />
+            <MoreOption />
           </div>
         </div>
       </div>
