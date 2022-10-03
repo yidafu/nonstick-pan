@@ -1,1 +1,3 @@
-export { Ruler } from './ruler';
+export {
+  Ruler,
+} from './ruler';
