@@ -1,6 +1,12 @@
-import { Remesh } from 'remesh';
-import { RemeshLogger } from 'remesh-logger';
-import { RemeshReduxDevtools } from 'remesh-redux-devtools';
+import {
+  Remesh,
+} from 'remesh';
+import {
+  RemeshLogger,
+} from 'remesh-logger';
+import {
+  RemeshReduxDevtools,
+} from 'remesh-redux-devtools';
 
 const store = Remesh.store({
   inspectors: [
@@ -9,4 +15,6 @@ const store = Remesh.store({
   ],
 });
 
-export { store };
+export {
+  store,
+};

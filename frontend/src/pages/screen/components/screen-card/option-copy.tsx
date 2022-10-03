@@ -1,9 +1,13 @@
 import {
   CopyOutlined,
 } from '@ant-design/icons';
-import React, { useContext } from 'react';
+import React, {
+  useContext,
+} from 'react';
 
-import { ScreenContext } from './screen-context';
+import {
+  ScreenContext,
+} from './screen-context';
 
 interface IOptionCopyProps {
 
@@ -17,9 +21,16 @@ export const OptionCopy: React.FC<IOptionCopyProps> = function (props) {
   }
 
   return (
-    <div className="flex justify-center items-center" onClick={handleCopyScren}>
+    <div
+      className="flex justify-center items-center"
+      onClick={handleCopyScren}
+    >
       <CopyOutlined />
-      <span className="ml-2">复制</span>
+      <span
+        className="ml-2"
+      >
+        复制
+      </span>
     </div>
   );
 };

@@ -1,9 +1,17 @@
-import { IScreen } from '@pan/common';
-import { Remesh } from 'remesh';
+import {
+  IScreen,
+} from '@pan/common';
+import {
+  Remesh,
+} from 'remesh';
 
-import { AsyncModule } from 'remesh/modules/async';
+import {
+  AsyncModule,
+} from 'remesh/modules/async';
 
-import { getAllScreen } from '@/api';
+import {
+  getAllScreen,
+} from '@/api';
 
 export const ScreenDomain = Remesh.domain({
   name: 'SceenDomain',
@@ -21,7 +29,9 @@ export const ScreenDomain = Remesh.domain({
     });
     const AllScreenQuery = domain.query({
       name: 'AllScreenQuery',
-      impl({ get }) {
+      impl({
+        get,
+      }) {
         return get(ScreenListState());
       },
     });

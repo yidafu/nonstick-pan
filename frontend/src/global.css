@@ -24,3 +24,7 @@ body {
 .p-full-h {
   height: calc(100vh - 4em); /* h-16 == 4em */
 }
+
+.test {
+  color: rgb(173, 173, 173);
+}

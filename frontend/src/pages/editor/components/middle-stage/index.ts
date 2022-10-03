@@ -1,1 +1,3 @@
-export { MiddleStage } from './middle-stage';
+export {
+  MiddleStage,
+} from './middle-stage';

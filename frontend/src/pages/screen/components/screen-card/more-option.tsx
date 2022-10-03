@@ -1,15 +1,29 @@
 import {
   DashOutlined,
 } from '@ant-design/icons';
-import { Dropdown, Button, Menu } from 'antd';
-import React, { useContext } from 'react';
+import {
+  Dropdown, Button, Menu,
+} from 'antd';
+import React, {
+  useContext,
+} from 'react';
 
-import { OptionCopy } from './option-copy';
-import { OptionDelete } from './option-delete';
-import { OptionExport } from './option-export';
-import { OptionPreview } from './option-preview';
+import {
+  OptionCopy,
+} from './option-copy';
+import {
+  OptionDelete,
+} from './option-delete';
+import {
+  OptionExport,
+} from './option-export';
+import {
+  OptionPreview,
+} from './option-preview';
 
-import { ScreenContext } from './screen-context';
+import {
+  ScreenContext,
+} from './screen-context';
 
 const MENU_ITEMS = [
   {
@@ -38,15 +52,21 @@ interface IMoreOptionProps {
   // screeId: number;
 }
 const MoreMenu = (
-  <Menu items={MENU_ITEMS} />
+  <Menu
+    items={MENU_ITEMS}
+  />
 );
 
 export const MoreOption: React.FC<IMoreOptionProps> = function () {
   const screen = useContext(ScreenContext);
 
   return (
-    <Dropdown overlay={MoreMenu}>
-      <Button icon={<DashOutlined />} />
+    <Dropdown
+      overlay={MoreMenu}
+    >
+      <Button
+        icon={<DashOutlined />}
+      />
     </Dropdown>
   );
 };
