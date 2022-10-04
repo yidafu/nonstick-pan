@@ -1,17 +1,9 @@
-import {
-  HomeOutlined,
-} from '@ant-design/icons';
-import {
-  Button,
-} from 'antd';
+import { HomeOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
 import React from 'react';
-import {
-  Link,
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import {
-  gUrl,
-} from '@/utils';
+import { gUrl } from '@/utils';
 
 interface IGoHomeProps {
 

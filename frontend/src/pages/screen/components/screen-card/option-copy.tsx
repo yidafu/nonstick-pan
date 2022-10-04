@@ -1,13 +1,7 @@
-import {
-  CopyOutlined,
-} from '@ant-design/icons';
-import React, {
-  useContext,
-} from 'react';
+import { CopyOutlined } from '@ant-design/icons';
+import React, { useContext } from 'react';
 
-import {
-  ScreenContext,
-} from './screen-context';
+import { ScreenContext } from './screen-context';
 
 interface IOptionCopyProps {
 

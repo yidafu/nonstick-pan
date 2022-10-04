@@ -1,3 +1,1 @@
-export {
-  LeftMenuPanel,
-} from './left-menu-panel';
+export { LeftMenuPanel } from './left-menu-panel';

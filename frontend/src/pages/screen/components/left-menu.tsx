@@ -1,14 +1,8 @@
-import {
-  Menu,
-} from 'antd';
+import { Menu } from 'antd';
 import React from 'react';
-import {
-  Link,
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import {
-  gUrl,
-} from '@/utils';
+import { gUrl } from '@/utils';
 
 interface ILeftMenuProps {
 

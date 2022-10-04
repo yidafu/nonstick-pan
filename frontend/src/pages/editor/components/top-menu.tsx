@@ -7,8 +7,9 @@ import {
 import { ItemType } from 'antd/lib/menu/hooks/useItems';
 import React from 'react';
 
-import { GoHome } from '@/components/go-home';
 import { useScreenData } from '../hooks';
+
+import { GoHome } from '@/components/go-home';
 
 interface ITopMenuProps {
 

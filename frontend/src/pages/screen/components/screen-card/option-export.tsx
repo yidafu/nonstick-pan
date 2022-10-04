@@ -1,13 +1,7 @@
-import {
-  ExportOutlined,
-} from '@ant-design/icons';
-import React, {
-  useContext,
-} from 'react';
+import { ExportOutlined } from '@ant-design/icons';
+import React, { useContext } from 'react';
 
-import {
-  ScreenContext,
-} from './screen-context';
+import { ScreenContext } from './screen-context';
 
 interface IOptionExportProps {
 

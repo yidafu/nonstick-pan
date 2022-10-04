@@ -1,3 +1,1 @@
-export {
-  LeftComMenu,
-} from './left-com-menu';
+export { LeftComMenu } from './left-com-menu';

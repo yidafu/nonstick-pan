@@ -1,8 +1,6 @@
 import React from 'react';
 
-import {
-  Ruler,
-} from './ruler';
+import { Ruler } from './ruler';
 
 interface IMiddleStageProps {
 
@@ -17,6 +15,8 @@ export const MiddleStage: React.FC<IMiddleStageProps> = function (props) {
         scale={2.3}
         onXAxis={console.log}
         onYAxis={console.log}
+        originX={0}
+        originY={0}
       />
     </div>
   );

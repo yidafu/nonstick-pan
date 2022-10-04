@@ -1,29 +1,15 @@
-import {
-  DashOutlined,
-} from '@ant-design/icons';
+import { DashOutlined } from '@ant-design/icons';
 import {
   Dropdown, Button, Menu,
 } from 'antd';
-import React, {
-  useContext,
-} from 'react';
+import React, { useContext } from 'react';
 
-import {
-  OptionCopy,
-} from './option-copy';
-import {
-  OptionDelete,
-} from './option-delete';
-import {
-  OptionExport,
-} from './option-export';
-import {
-  OptionPreview,
-} from './option-preview';
+import { OptionCopy } from './option-copy';
+import { OptionDelete } from './option-delete';
+import { OptionExport } from './option-export';
+import { OptionPreview } from './option-preview';
 
-import {
-  ScreenContext,
-} from './screen-context';
+import { ScreenContext } from './screen-context';
 
 const MENU_ITEMS = [
   {

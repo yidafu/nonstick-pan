@@ -4,9 +4,7 @@ import {
 import {
   Button, Dropdown, Menu, MenuProps,
 } from 'antd';
-import {
-  ItemType,
-} from 'antd/lib/menu/hooks/useItems';
+import { ItemType } from 'antd/lib/menu/hooks/useItems';
 import React from 'react';
 
 interface ITopMenuProps {

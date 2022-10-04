@@ -1,3 +1,1 @@
-export {
-  RightConfigPanel,
-} from './right-config-panel';
+export { RightConfigPanel } from './right-config-panel';

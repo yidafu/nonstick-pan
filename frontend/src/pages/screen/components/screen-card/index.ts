@@ -1,3 +1,1 @@
-export {
-  ScreenCard,
-} from './screen-card';
+export { ScreenCard } from './screen-card';

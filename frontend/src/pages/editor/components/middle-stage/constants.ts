@@ -1,0 +1,1 @@
+export const STAGE_DEFAULT_PADDING = 32;

@@ -1,39 +1,23 @@
-import {
-  EditOutlined,
-} from '@ant-design/icons';
-import {
-  IScreen,
-} from '@pan/common';
-import {
-  Button,
-} from 'antd';
+import { EditOutlined } from '@ant-design/icons';
+import { IScreen } from '@pan/common';
+import { Button } from 'antd';
 import React from 'react';
 
-import {
-  Link,
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import {
-  MoreOption,
-} from './more-option';
+import { MoreOption } from './more-option';
 
-import {
-  ScreenContext,
-} from './screen-context';
+import { ScreenContext } from './screen-context';
 
 import defaultSnapshot from '@/assets/snapshot.png';
-import {
-  gUrl,
-} from '@/utils';
+import { gUrl } from '@/utils';
 
 interface IScreenCardProps {
   screen: IScreen,
 }
 
 export const ScreenCard: React.FC<IScreenCardProps> = function (props) {
-  const {
-    screen,
-  } = props;
+  const { screen } = props;
   return (
     <ScreenContext.Provider
       value={screen}

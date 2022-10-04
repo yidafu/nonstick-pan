@@ -10,9 +10,7 @@ import {
   graduatedScale, ratio,
 } from './utils';
 
-import {
-  toFixed,
-} from '@/utils';
+import { toFixed } from '@/utils';
 
 const DEFAULT_SHORTER_GRADUATION_LENGTH = 5;
 const DEFAULT_LONGGER_GRADUATION_LENGHT = 10;
@@ -233,9 +231,7 @@ export const Ruler: React.FC<IRulerProps> = function Ruler(props) {
       </div>
       <div
         id="x-ruler-container"
-        className={cn('w-full h-4 absolute left-4', {
-          hidden: !visible,
-        })}
+        className={cn('w-full h-4 absolute left-4', { hidden: !visible })}
         onClick={handleXAxisClick}
       >
         <canvas
@@ -245,9 +241,7 @@ export const Ruler: React.FC<IRulerProps> = function Ruler(props) {
       </div>
       <div
         id="y-ruler-container"
-        className={cn('h-full absolute top-4 w-4', {
-          hidden: !visible,
-        })}
+        className={cn('h-full absolute top-4 w-4', { hidden: !visible })}
         onClick={handleYAxisClick}
       >
         <canvas

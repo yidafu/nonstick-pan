@@ -1,7 +1,11 @@
-import { IComponent, IScreen } from '@pan/common';
+import {
+  IComponent, IScreen,
+} from '@pan/common';
 import { Remesh } from 'remesh';
 
-import { getComponentByScreen, getScreen } from '@/api';
+import {
+  getComponentByScreen, getScreen,
+} from '@/api';
 import { ResourceModule } from '@/domain/resource-module';
 
 export const EditorDomain = Remesh.domain({

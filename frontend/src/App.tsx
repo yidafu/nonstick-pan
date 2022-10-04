@@ -1,16 +1,10 @@
 import {
   BrowserRouter, Route, Routes,
 } from 'react-router-dom';
-import {
-  RemeshRoot,
-} from 'remesh-react';
+import { RemeshRoot } from 'remesh-react';
 
-import {
-  store,
-} from './domain';
-import {
-  router,
-} from './router';
+import { store } from './domain';
+import { router } from './router';
 
 export function App() {
   return (

@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import {
-  App,
-} from './app';
+import { App } from './app';
 import 'normalize.css';
 import 'antd/dist/antd.css';
 import 'antd/dist/antd.dark.css';

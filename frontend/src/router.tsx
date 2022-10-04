@@ -1,13 +1,9 @@
-import {
-  ReactNode,
-} from 'react';
+import { ReactNode } from 'react';
 
 import EditorPage from '@/pages/editor';
 import NotFound from '@/pages/not-found';
 import ScreenPage from '@/pages/screen';
-import {
-  gUrl,
-} from '@/utils';
+import { gUrl } from '@/utils';
 
 export interface IAppRoute {
   path: string;

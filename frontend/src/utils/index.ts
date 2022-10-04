@@ -1,6 +1,4 @@
-import {
-  URL_PREFIX,
-} from '@/constants';
+import { URL_PREFIX } from '@/constants';
 
 /**
  * generate url with prefix
