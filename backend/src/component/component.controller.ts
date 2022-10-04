@@ -12,6 +12,8 @@ import { QueryComponentDto } from './dto/query-component.dto';
 import { UpdateComponentDot } from './dto/update-screeen.dto';
 import { ComponentVo } from './vo/component.vo';
 
+import { ResponseUtils } from '@/utils/response.utils';
+
 const EXAMPLE_COMPONENT_DATA = {
   id: '1',
   screenId: '1',
@@ -59,7 +61,7 @@ export class ComponentController {
   })
   async findAll(@Query() query: QueryComponentDto) {
     const allComponents = await this.componentSerivce.findAll(query);
-    return allComponents.map(ComponentVo.convert);
+    return ResponseUtils.success(allComponents.map(ComponentVo.convert));
   }
 
   @Get(':componentId')
@@ -80,7 +82,7 @@ export class ComponentController {
   })
   async getById(@Param('componentId') componentId: number) {
     const component = await this.componentSerivce.findById(componentId);
-    return ComponentVo.convert(component);
+    return ResponseUtils.success(ComponentVo.convert(component));
   }
 
   @Post()
@@ -111,7 +113,7 @@ export class ComponentController {
   })
   async createComponent(@Body() createComponentDto: CreateComponentDto) {
     const component = await this.componentSerivce.create(createComponentDto);
-    return ComponentVo.convert(component);
+    return ResponseUtils.success(ComponentVo.convert(component));
   }
 
   @Patch('batch')
@@ -148,7 +150,7 @@ export class ComponentController {
     const components = await this.componentSerivce.findByIdList(
       updateComponentDto.map((dto) => dto.id),
     );
-    return components.map(ComponentVo.convert);
+    return ResponseUtils.success(components.map(ComponentVo.convert));
   }
 
   @Patch(':componentId')
@@ -184,7 +186,7 @@ export class ComponentController {
   ) {
     await this.componentSerivce.updataById(componentId, updateComponentDto);
     const component = await this.componentSerivce.findById(componentId);
-    return ComponentVo.convert(component);
+    return ResponseUtils.success(ComponentVo.convert(component));
   }
 
   @Delete(':componentId')
@@ -204,6 +206,6 @@ export class ComponentController {
   })
   async removeScreenById(@Param('componentId') screenId: number) {
     await this.componentSerivce.removeById(screenId);
-    return true;
+    return ResponseUtils.success(true);
   }
 }

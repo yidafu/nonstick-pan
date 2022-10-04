@@ -14,6 +14,8 @@ import { UpdateScreenDot } from './dto/update-screeen.dto';
 import { ScreenService } from './screen.service';
 import { ScreenVo } from './vo/screen.vo';
 
+import { ResponseUtils } from '@/utils/response.utils';
+
 @Controller('screen')
 export class ScreenController {
   constructor(
@@ -60,7 +62,7 @@ export class ScreenController {
   })
   async findAll(@Query() query: QueryScreeDto) {
     const allScreens = await this.screenSerivce.findAll(query);
-    return allScreens.map(ScreenVo.convert);
+    return ResponseUtils.success(allScreens.map(ScreenVo.convert));
   }
 
   @Get(':screenId/components')
@@ -102,7 +104,7 @@ export class ScreenController {
   })
   async findScreenAllComponents(@Param('screenId') screenId: number) {
     const compoennts = await this.componentSrevice.findAll({ screenId });
-    return compoennts.map(ComponentVo.convert);
+    return ResponseUtils.success(compoennts.map(ComponentVo.convert));
   }
 
   @Get(':screenId')
@@ -120,7 +122,7 @@ export class ScreenController {
   })
   async getById(@Param('screenId') screenId: number) {
     const screen = await this.screenSerivce.findById(screenId);
-    return ScreenVo.convert(screen);
+    return ResponseUtils.success(ScreenVo.convert(screen));
   }
 
   @Post()
@@ -161,7 +163,7 @@ export class ScreenController {
   })
   async createScreen(@Body() createScreenDto: CreateScreenDto) {
     const screen = await this.screenSerivce.create(createScreenDto);
-    return ScreenVo.convert(screen);
+    return ResponseUtils.success(ScreenVo.convert(screen));
   }
 
   @Patch(':screenId')
@@ -194,7 +196,7 @@ export class ScreenController {
   ) {
     await this.screenSerivce.updataById(screenId, updateScreenDto);
     const screen = await this.screenSerivce.findById(screenId);
-    return ScreenVo.convert(screen);
+    return ResponseUtils.success(ScreenVo.convert(screen));
   }
 
   @Delete(':screenId')
@@ -214,6 +216,6 @@ export class ScreenController {
   })
   async removeScreenById(@Param('screenId') screenId: number) {
     await this.screenSerivce.removeById(screenId);
-    return true;
+    return ResponseUtils.success(true);
   }
 }

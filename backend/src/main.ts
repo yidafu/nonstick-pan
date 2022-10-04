@@ -1,12 +1,17 @@
-import { NestFactory } from '@nestjs/core';
+import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 import { AppModule } from './app.module';
+import { ExceptionTrapFilter } from './filter/exception-trap.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: ['error', 'warn', 'log'],
   });
+
+  const httpAdapterHost = app.get(HttpAdapterHost);
+  app.useGlobalFilters(new ExceptionTrapFilter(httpAdapterHost));
+
   app.enableCors();
   const config = new DocumentBuilder()
     .setTitle('Visualization Screen')
