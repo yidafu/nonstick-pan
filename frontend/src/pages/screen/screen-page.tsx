@@ -1,38 +1,22 @@
-import React, {
-  useEffect,
-} from 'react';
-import {
-  useRemeshDomain, useRemeshSend, useRemeshQuery,
-} from 'remesh-react';
+import { Spin } from 'antd';
+import React from 'react';
 
-import {
-  LeftMenu,
-} from './components/left-menu';
+import { LeftMenu } from './components/left-menu';
 
-import {
-  ScreenCard,
-} from './components/screen-card/screen-card';
+import { ScreenCard } from './components/screen-card/screen-card';
 
-import {
-  TopMenu,
-} from '@/components/top-menu';
-import {
-  ScreenDomain,
-} from '@/domain/ScreenDomain';
+import { useScreens } from './hooks/useScreens';
+
+import { TopMenu } from '@/components/top-menu';
 
 interface IScreenPageProps {
 
 }
 
 export const ScreenPage: React.FC<IScreenPageProps> = function () {
-  const screenDomain = useRemeshDomain(ScreenDomain());
-  const send = useRemeshSend();
-  const screenList = useRemeshQuery(screenDomain.query.AllScreenQuery());
-  console.log(screenList);
-  useEffect(() => {
-    send(screenDomain.command.LoadScreen());
-  }, []);
-
+  const {
+    screens, loading,
+  } = useScreens();
   return (
     <div>
       <TopMenu />
@@ -40,15 +24,17 @@ export const ScreenPage: React.FC<IScreenPageProps> = function () {
         className="p-full-h flex"
       >
         <LeftMenu />
-        <div
-          className="w-auto flex"
-        >
-          {screenList.map((screen) => (
-            <ScreenCard
-              screen={screen}
-            />
-          ))}
-        </div>
+        <Spin spinning={loading}>
+          <div
+            className="w-auto flex"
+          >
+            {screens.map((screen) => (
+              <ScreenCard
+                screen={screen}
+              />
+            ))}
+          </div>
+        </Spin>
       </div>
     </div>
   );

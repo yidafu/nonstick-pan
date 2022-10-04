@@ -4,14 +4,11 @@ import {
 import {
   Button, Dropdown, Menu,
 } from 'antd';
-import {
-  ItemType,
-} from 'antd/lib/menu/hooks/useItems';
+import { ItemType } from 'antd/lib/menu/hooks/useItems';
 import React from 'react';
 
-import {
-  GoHome,
-} from '@/components/go-home';
+import { GoHome } from '@/components/go-home';
+import { useScreenData } from '../hooks';
 
 interface ITopMenuProps {
 
@@ -25,6 +22,8 @@ const menuItems: ItemType[] = [
 ];
 
 export const TopMenu: React.FC<ITopMenuProps> = function () {
+  const screen = useScreenData();
+
   return (
     <div
       className="flex h-16 py-4 px-8 p-block justify-between"
@@ -37,7 +36,7 @@ export const TopMenu: React.FC<ITopMenuProps> = function () {
       <div
         className="w-1/2 flex items-center justify-center"
       >
-        大屏名称
+        { screen.name }
       </div>
       <div
         className="w-1/4 flex items-center justify-end"
@@ -58,7 +57,7 @@ export const TopMenu: React.FC<ITopMenuProps> = function () {
               <Menu
                 items={menuItems}
               />
-)}
+            )}
           >
             <UserOutlined
               size={20}
