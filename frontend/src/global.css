@@ -13,11 +13,13 @@ body {
 .p-bg {
   background-color: var(--p-bg-color);
 }
+.p-bg-l {
+  background-color: var(--p-color);
+}
 .p-bg-action {
   background-color: var(--p-action-color);
 }
 .p-block {
-  background-color: var(--p-color);
   border: 1px solid var(--p-border-color);
 }
 

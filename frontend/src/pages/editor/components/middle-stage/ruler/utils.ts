@@ -49,20 +49,29 @@ export function graduatedScale(rulerLength: number, origin: number, scale: numbe
   const accuracy = graduationAccuracy(scale);
   // 比例尺一格对应的真实长度
   const accuracyDistance = accuracy * scale;
-  // 转化为比例尺真实长度的倍数
-  let graduationPos = -Math.round(Math.round(origin / accuracyDistance) * accuracyDistance);
-  const axesOfLinePlot = [];
-  for (let i = 0; i * accuracyDistance < graduationLength; i += 1) {
-    // 每 10 个刻度，需要显示指标
-    const isTenthGraduation = Math.round(graduationPos / scale)
-      % (accuracy * 10) === 0;
-    axesOfLinePlot.push({
-      offset: ratio(i * accuracyDistance),
-      isTenth: isTenthGraduation,
-      text: isTenthGraduation ? String(Math.round(graduationPos / scale)) : undefined,
-    });
+  const remainder = origin % accuracyDistance;
+  // 第一个刻度的读数
+  const startGraduationIndicator = ((origin - remainder) / scale);
 
-    graduationPos += accuracyDistance;
+  const axesOfLinePlot = [];
+
+  for (
+    let graduationOffset = 0;
+    graduationOffset + remainder < graduationLength;
+    graduationOffset += accuracyDistance
+  ) {
+    // 当前刻度的读数
+    const graduationInicator = Math.round((graduationOffset) / scale)
+      - startGraduationIndicator;
+    // 每 10 个刻度，需要显示指标。
+    const isTenthGraduation = graduationInicator % (accuracy * 10) === 0;
+
+    axesOfLinePlot.push({
+      offset: ratio(graduationOffset + remainder),
+      isTenth: isTenthGraduation,
+      text: isTenthGraduation
+        ? String(graduationInicator) : '-1',
+    });
   }
 
   return {

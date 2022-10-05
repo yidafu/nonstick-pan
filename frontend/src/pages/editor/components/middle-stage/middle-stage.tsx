@@ -1,23 +1,30 @@
 import React from 'react';
 
+import { useRuler } from '../../hooks';
+
 import { Ruler } from './ruler';
+import { Stage } from './stage';
 
 interface IMiddleStageProps {
 
 }
 
-export const MiddleStage: React.FC<IMiddleStageProps> = function (props) {
+export const MiddleStage: React.FC<IMiddleStageProps> = function () {
+  const {
+    scale, origin,
+  } = useRuler();
   return (
     <div
-      className="grow h-full"
+      className="p-bg grow h-full relative"
     >
       <Ruler
-        scale={2.3}
+        scale={scale}
         onXAxis={console.log}
         onYAxis={console.log}
-        originX={0}
-        originY={0}
+        originX={origin.x}
+        originY={origin.y}
       />
+      <Stage />
     </div>
   );
 };

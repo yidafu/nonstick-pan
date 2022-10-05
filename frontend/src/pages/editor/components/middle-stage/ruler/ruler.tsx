@@ -3,8 +3,14 @@ import {
 } from '@ant-design/icons';
 import cn from 'classnames';
 import React, {
-  useEffect, useState, MouseEvent,
+  useEffect, useState, MouseEvent, useCallback,
 } from 'react';
+
+import {
+  fromEvent, interval, throttle,
+} from 'rxjs';
+
+import { STAGE_RULRE_WIDTH } from '../constants';
 
 import {
   graduatedScale, ratio,
@@ -179,33 +185,44 @@ export const Ruler: React.FC<IRulerProps> = function Ruler(props) {
     xAxis: 0, yAxis: 0,
   });
 
-  useEffect(() => {
+  const renderRulers = useCallback(() => {
     const rectX = document.getElementById('x-ruler-container')!.getBoundingClientRect();
 
     const $canvasX = document.getElementById('x-axis-ruler') as HTMLCanvasElement;
     // 根据父容器 + 设备分辨率设置设置 canvas 宽高
-    $canvasX.width = ratio(rectX.width);
+    $canvasX.width = ratio(rectX.width - STAGE_RULRE_WIDTH);
     $canvasX.height = ratio(rectX.height);
     setRulerOffset((offset: IRulerContainerOffset) => ({
       ...offset, xAxis: rectX.left,
     }));
     renderXAxisRuler(rectX, originX, toFixed(scale, 2));
-  }, [scale, originX]);
 
-  useEffect(() => {
     const rectY = document.getElementById('y-ruler-container')!.getBoundingClientRect();
 
     const $canvasY = document.getElementById('y-axis-ruler') as HTMLCanvasElement;
 
     // 根据父容器 + 设备分辨率设置设置 canvas 宽高
     $canvasY.width = ratio(rectY.width);
-    $canvasY.height = ratio(rectY.height);
+    $canvasY.height = ratio(rectY.height - STAGE_RULRE_WIDTH);
 
     setRulerOffset((offset: IRulerContainerOffset) => ({
       ...offset, yAxis: rectY.top,
     }));
     renderYAxisRuler(rectY, originY, toFixed(scale, 2));
-  }, [scale, originY]);
+  }, [scale, originY, originX]);
+
+  useEffect(() => {
+    renderRulers();
+
+    const subscription = fromEvent(window, 'resize')
+      .pipe(throttle(() => interval(300)))
+      .subscribe(() => {
+        renderRulers();
+      });
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [renderRulers]);
 
   function handleXAxisClick(evt: MouseEvent<HTMLDivElement>) {
     const domOffset = (evt.clientX - rulerOffset.xAxis);
@@ -221,7 +238,7 @@ export const Ruler: React.FC<IRulerProps> = function Ruler(props) {
 
   return (
     <div
-      className="relative h-full"
+      className="absolute inset-0"
     >
       <div
         className="absolute top-0 left-0 h-4 w-4 flex items-center justify-center"
