@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useRuler } from '../../hooks';
 
+import { ResizeBar } from './resize-bar';
 import { Ruler } from './ruler';
 import { Stage } from './stage';
 
@@ -25,6 +26,7 @@ export const MiddleStage: React.FC<IMiddleStageProps> = function () {
         originY={origin.y}
       />
       <Stage />
+      <ResizeBar />
     </div>
   );
 };
