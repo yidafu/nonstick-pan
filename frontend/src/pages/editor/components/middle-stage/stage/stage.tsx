@@ -27,7 +27,12 @@ export const Stage: React.FC<IStageProps> = function Stage() {
         style={stageStyle}
         ref={stageRef}
       >
-        {componentTree.map((compoennt) => <PanComponentWrapper componentConfig={compoennt} />)}
+        {componentTree.map((compoennt) => (
+          <PanComponentWrapper
+            key={compoennt.id}
+            componentConfig={compoennt}
+          />
+        ))}
       </div>
     </div>
   );

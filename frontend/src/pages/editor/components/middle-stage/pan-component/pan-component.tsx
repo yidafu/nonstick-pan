@@ -1,5 +1,8 @@
 import { IComponentNode } from '@pan/common';
+import cn from 'classnames';
 import React from 'react';
+
+import { computeStyle } from './utils';
 
 import { ComponentManager } from '@/pan-components';
 
@@ -7,23 +10,19 @@ interface IPanComponentProps {
   componentConfig: IComponentNode;
 }
 
-function computeStyle(config: IComponentNode) {
-  return {
-    width: config.width,
-    height: config.height,
-    top: config.offsetX,
-    left: config.offsetY,
-    zIndex: config.zIndex,
-  };
-}
-
 export const PanComponent: React.FC<IPanComponentProps> = function (props) {
   const { componentConfig } = props;
-  const { name } = componentConfig;
+  const { id, name, groupId } = componentConfig;
+  const isRoot = groupId === '0';
   const style = computeStyle(componentConfig);
   return (
     <div
-      className="pan-component-wrapper absolute border-yellow-100"
+      className={cn(
+        'pan-component-wrapper absolute',
+        isRoot && 'outline-dashed outline-1 outline-orange-400',
+      )}
+      data-c-id={id}
+      data-is-group={false}
       style={style}
     >
       {ComponentManager.render(name)}
