@@ -3,14 +3,22 @@ import {
 } from 'antd';
 import { DefaultOptionType } from 'antd/lib/select';
 import React, {
-  useCallback, useState,
+  useCallback, useContext, useEffect, useState,
 } from 'react';
+import {
+  fromEvent, interval, throttle,
+} from 'rxjs';
 
 import { useRuler } from '../../hooks';
+
+import { MiddleStageContext } from './middle-stage-context';
 
 interface IResizeBarProps {
 
 }
+
+export const MIN_SCALE = 25;
+export const MAX_SCALE = 400;
 
 const ScaleOptions: DefaultOptionType[] = [
   {
@@ -42,6 +50,7 @@ const ScaleOptions: DefaultOptionType[] = [
 export const ResizeBar: React.FC<IResizeBarProps> = function ResizeBar() {
   const [scale, setScale] = useState(100);
   const { updateScale } = useRuler();
+  const middleStageRef = useContext(MiddleStageContext);
 
   const hanldeUpdateScale = useCallback((s: number) => {
     if (s < 0) {
@@ -52,8 +61,29 @@ export const ResizeBar: React.FC<IResizeBarProps> = function ResizeBar() {
     updateScale(s / 100);
   }, [updateScale]);
 
+  useEffect(() => {
+    if (!middleStageRef?.current) return () => {};
+
+    const subscription = fromEvent(middleStageRef.current, 'wheel')
+      .pipe(throttle(() => interval(300)))
+      .subscribe((evt: Event) => {
+        if (evt instanceof WheelEvent) {
+          // 控制缩放倍数
+          const newScale = Math.max(Math.min(scale + evt.deltaY, MAX_SCALE), MIN_SCALE);
+          // TODO: 已鼠标所在位置为中心进行缩放
+          updateScale(newScale / 100);
+          setScale(newScale);
+        }
+        evt.preventDefault();
+      });
+    return () => subscription.unsubscribe();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scale, updateScale]);
+
   return (
-    <div className="absolute flex right-4 bottom-4 w-80 p-bg-l shadow-md shadow-black items-center justify-center p-1">
+    <div
+      className="absolute flex right-4 bottom-4 w-80 p-bg-l shadow-md shadow-black items-center justify-center p-1"
+    >
       <Select
         className="w-20 mr-2"
         size="small"
@@ -64,8 +94,8 @@ export const ResizeBar: React.FC<IResizeBarProps> = function ResizeBar() {
       <Slider
         className="grow"
         onChange={hanldeUpdateScale}
-        min={25}
-        max={400}
+        min={MIN_SCALE}
+        max={MAX_SCALE}
         step={1}
         value={scale}
         tooltip={{ formatter(value?: number) { return `${(value ?? 1)}%`; } }}
