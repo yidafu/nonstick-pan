@@ -1,6 +1,10 @@
 import React, { useRef } from 'react';
 
-import { useStage } from './hook';
+import { PanComponentWrapper } from '../pan-component';
+
+import {
+  useComponents, useStage,
+} from '@/pages/editor/hooks';
 
 interface IStageProps {
 
@@ -10,6 +14,7 @@ export const Stage: React.FC<IStageProps> = function Stage() {
   const stageRef = useRef<HTMLDivElement>(null);
   const stageWrapperRef = useRef<HTMLDivElement>(null);
   const { stageStyle } = useStage(stageWrapperRef, stageRef);
+  const { componentTree } = useComponents();
   return (
     <div
       id="stage-wrapper"
@@ -21,7 +26,9 @@ export const Stage: React.FC<IStageProps> = function Stage() {
         className="p-bg-l absolute shadow-md"
         style={stageStyle}
         ref={stageRef}
-      />
+      >
+        {componentTree.map((compoennt) => <PanComponentWrapper componentConfig={compoennt} />)}
+      </div>
     </div>
   );
 };

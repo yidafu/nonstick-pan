@@ -1,6 +1,6 @@
 import { Remesh } from 'remesh';
 
-import { STAGE_DEFAULT_PADDING } from '../components/middle-stage/constants';
+import { STAGE_DEFAULT_PADDING } from '../constants';
 
 export interface IRulerOrigin {
   x: number,

@@ -10,7 +10,7 @@ import {
   fromEvent, interval, throttle,
 } from 'rxjs';
 
-import { STAGE_RULRE_WIDTH } from '../constants';
+import { STAGE_RULRE_WIDTH } from '../../../constants';
 
 import {
   graduatedScale, ratio,
