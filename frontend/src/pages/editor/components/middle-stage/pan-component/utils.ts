@@ -10,8 +10,8 @@ export function computeStyle(config: IComponentNode) {
   return {
     width: config.width,
     height: config.height,
-    top: config.offsetX,
-    left: config.offsetY,
+    top: config.offsetY,
+    left: config.offsetX,
     zIndex: config.zIndex,
   };
 }

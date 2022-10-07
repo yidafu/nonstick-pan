@@ -29,3 +29,11 @@ export function GET<R>(url: string, params?: any) {
     params,
   });
 }
+
+export function PATCH<R>(url: string, data: Partial<R>) {
+  return request<R>({
+    method: 'PATCH',
+    url,
+    data,
+  });
+}

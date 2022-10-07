@@ -27,7 +27,7 @@ export const ResourceModule = <P, R>(
   const LoadingFinishEvent = domain.event({ name: `${options.name}.LoadingFinishEvent` });
   const SuccessEvent = domain.event<P>({ name: `${options.name}.SuccessEvent` });
   const FailedEvent = domain.event<Error>({ name: `${options.name}.FailedEvent` });
-  const ChangedEvent = domain.event<R>({ name: `${options.name}.ChangedEvent` });
+  const ChangedEvent = domain.event<[R, R]>({ name: `${options.name}.ChangedEvent` });
 
   const LoadingState = domain.state({
     name: `${options.name}.LoadingState`,
@@ -66,9 +66,9 @@ export const ResourceModule = <P, R>(
 
   const UpdateResourceCommand = domain.command({
     name: `${options.name}.UpdateResourceCommand`,
-    impl: (_ctx, data: R) => [
+    impl: ({ get }, data: R) => [
+      ChangedEvent([get(ResourceDataState()), data]),
       ResourceDataState().new(data!),
-      ChangedEvent(data),
     ],
   });
 
@@ -126,7 +126,10 @@ export const ResourceModule = <P, R>(
     query: {
       ResourceQuery, LoadingQuery,
     },
-    command: { FetchCommand },
+    command: {
+      FetchCommand,
+      UpdateResourceCommand,
+    },
     event: {
       FetchEvent,
       SuccessEvent,

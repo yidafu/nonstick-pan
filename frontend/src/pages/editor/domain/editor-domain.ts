@@ -4,8 +4,9 @@ import {
 import { Remesh } from 'remesh';
 
 import {
-  getComponentByScreen, getScreen,
+  getComponentByScreen, getScreen, updateComponent,
 } from '@/api';
+import { ListResourceModule } from '@/domain/list-resource-module';
 import { ResourceModule } from '@/domain/resource-module';
 
 export const EditorDomain = Remesh.domain({
@@ -18,24 +19,33 @@ export const EditorDomain = Remesh.domain({
       },
       default: {} as IScreen,
     });
-    const ComponentsResourceModule = ResourceModule<number, IComponent[]>(domain, {
-      name: 'EditorComponentsResourceModule',
+    const ComponentsListResourceModule = ListResourceModule<number, IComponent>(domain, {
+      name: 'EditorComponentsListResourceModule',
       default: [],
       fetch(screenId) {
         return getComponentByScreen(screenId);
       },
+      update(id, data) {
+        return updateComponent(id as string, data);
+      },
+      isEqual(_a: R, _b: R): boolean {
+        return false;
+      },
     });
+
     return {
       query: {
         ScreenResourceQuery: ScreenResourceModule.query.ResourceQuery,
         IsScreenLoadingQuery: ScreenResourceModule.query.LoadingQuery,
 
-        ComponentsQuery: ComponentsResourceModule.query.ResourceQuery,
-        IsComponentsLoadingQuery: ComponentsResourceModule.query.LoadingQuery,
+        ComponentsQuery: ComponentsListResourceModule.query.ResourceQuery,
+        IsComponentsLoadingQuery: ComponentsListResourceModule.query.LoadingQuery,
       },
       command: {
         FetchSingleScreenCommand: ScreenResourceModule.command.FetchCommand,
-        FetchComponentsCommand: ComponentsResourceModule.command.FetchCommand,
+        FetchComponentsCommand: ComponentsListResourceModule.command.FetchCommand,
+
+        UpdateSingleComponentCommand: ComponentsListResourceModule.command.UpdateSingleCommand,
       },
     };
   },
