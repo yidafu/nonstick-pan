@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { PanComponentWrapper } from '../pan-component';
+import { StageComponentWrapper } from '../stage-component';
 
 import {
   useComponents, useStage,
@@ -30,7 +30,7 @@ export const Stage: React.FC<IStageProps> = function Stage() {
         ref={dropRef}
       >
         {componentTree.map((compoennt) => (
-          <PanComponentWrapper
+          <StageComponentWrapper
             key={compoennt.id}
             componentConfig={compoennt}
           />
