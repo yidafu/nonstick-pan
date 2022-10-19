@@ -2,6 +2,8 @@ import {
   RefObject, useEffect,
 } from 'react';
 
+import { useRuler } from './use-ruler';
+
 import { useUpdateComponent } from './use-update-component';
 
 export interface IComponentDragData {
@@ -15,14 +17,14 @@ export interface IMousePosition {
 
 export function useDragComponent(domRef: RefObject<HTMLDivElement>, canDrag = false) {
   const updateComponent = useUpdateComponent();
-
+  const { scale } = useRuler();
   // TODO: 改成 rxjs
   useEffect(() => {
     if (!canDrag) {
       return;
     }
-    const $div = domRef.current;
-    if (!$div) return;
+    const $container = domRef.current;
+    if (!$container) return;
 
     let canMoveComponent = false;
     const mousePostion: IMousePosition = {
@@ -31,9 +33,11 @@ export function useDragComponent(domRef: RefObject<HTMLDivElement>, canDrag = fa
     };
 
     function handleMouseDown(evt: MouseEvent) {
+      $container!.style.cursor = 'grab';
       canMoveComponent = true;
       mousePostion.left = evt.clientX;
       mousePostion.top = evt.clientY;
+      evt.stopPropagation();
     }
 
     function handleComponentMove(evt: MouseEvent) {
@@ -41,22 +45,39 @@ export function useDragComponent(domRef: RefObject<HTMLDivElement>, canDrag = fa
 
       const deltaX = evt.clientX - mousePostion.left;
       const deltaY = evt.clientY - mousePostion.top;
-      console.log(deltaX, deltaY);
+
+      mousePostion.left = evt.clientX;
+      mousePostion.top = evt.clientY;
+
       // 转为舞台的移动距离
+      const top = parseFloat($container!.style.top) + deltaY / scale;
+      $container!.style.top = `${top}px`;
+      const left = parseFloat($container!.style.left) + deltaX / scale;
+      $container!.style.left = `${left}px`;
+      evt.stopPropagation();
     }
 
     function handleMouseUp(evt: MouseEvent) {
+      $container!.style.cursor = 'pointer';
       canMoveComponent = false;
-      mousePostion.left = 0;
-      mousePostion.top = 0;
+
+      const offsetX = parseFloat($container?.style.left!);
+      const offsetY = parseFloat($container?.style.top!);
+      const componetId = $container?.dataset.cId;
+      if (componetId && typeof offsetX === 'number' && typeof offsetY === 'number') {
+        updateComponent(componetId, {
+          offsetX, offsetY,
+        });
+      }
+      evt.stopPropagation();
     }
-    $div.addEventListener('mousedown', handleMouseDown);
-    $div.addEventListener('mousemove', handleComponentMove);
-    $div.addEventListener('mouseup', handleMouseUp);
+    $container.addEventListener('mousedown', handleMouseDown);
+    $container.addEventListener('mousemove', handleComponentMove);
+    $container.addEventListener('mouseup', handleMouseUp);
     return (): void => {
-      $div.removeEventListener('mousedown', handleMouseDown);
-      $div.removeEventListener('mousemove', handleComponentMove);
-      $div.removeEventListener('mousedown', handleMouseUp);
+      $container.removeEventListener('mousedown', handleMouseDown);
+      $container.removeEventListener('mousemove', handleComponentMove);
+      $container.removeEventListener('mousedown', handleMouseUp);
     };
-  }, [canDrag, domRef]);
+  }, [canDrag, domRef, scale, updateComponent]);
 }
