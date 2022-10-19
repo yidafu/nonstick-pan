@@ -4,7 +4,7 @@ import {
 } from 'remesh-react';
 
 import {
-  IRulerOrigin, RulerDomain,
+  IRulerCooridinate, RulerDomain,
 } from '../domain/ruler-domain';
 
 export function useRuler() {
@@ -13,7 +13,7 @@ export function useRuler() {
   const origin = useRemeshQuery(rulerDomain.query.OriginQuery());
   const scale = useRemeshQuery(rulerDomain.query.ScaleQuery());
 
-  const updateOrigin = useCallback((newOrigin: IRulerOrigin) => {
+  const updateOrigin = useCallback((newOrigin: IRulerCooridinate) => {
     send(rulerDomain.command.UpdateOriginCommand(newOrigin));
   }, [rulerDomain.command, send]);
 
@@ -22,6 +22,9 @@ export function useRuler() {
   }, [rulerDomain.command, send]);
 
   return {
-    origin, scale, updateOrigin, updateScale,
+    origin,
+    scale,
+    updateOrigin,
+    updateScale,
   };
 }

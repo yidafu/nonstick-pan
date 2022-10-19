@@ -32,7 +32,9 @@ export const ListResourceModule = <P, R extends { id: TIdType }>(
   const UpdateSingleSuccessEvent = domain.event<[TIdType, Partial<R>]>({ name: 'UpdateSingleSuccessEvent' });
   const UpdateSingleFailEvent = domain.event<string>({ name: `${options.name}.UpdateSingleFailEvent` });
 
-  const { update, isEqual, ...restOption } = options;
+  const {
+    update, isEqual, ...restOption
+  } = options;
   const ResourceModuleInst = ResourceModule<P, R[]>(domain, restOption);
 
   const UpdateListResourceCommand = domain.command({
@@ -84,7 +86,6 @@ export const ListResourceModule = <P, R extends { id: TIdType }>(
     query: {
       ResourceQuery: ResourceModuleInst.query.ResourceQuery,
       LoadingQuery: ResourceModuleInst.query.LoadingQuery,
-
     },
     command: {
       UpdateSingleCommand,

@@ -71,7 +71,7 @@ export function useStage(
       transformOrigin: 'top left',
       // transformOrigin: `${STAGE_DEFAULT_PADDING}px ${STAGE_DEFAULT_PADDING}px`,
     });
-  }, [height, scale, stageRef, stageWrapperRef, updateOrigin, width]);
+  }, [scale, stageRef, stageWrapperRef, updateOrigin, width, height]);
 
   useEffect(() => {
     initScale();

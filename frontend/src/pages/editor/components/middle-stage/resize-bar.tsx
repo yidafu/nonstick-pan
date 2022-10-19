@@ -11,7 +11,11 @@ import {
 
 import { useRuler } from '../../hooks';
 
+import { useStageScale } from '../../hooks/use-stage-scale';
+
 import { MiddleStageContext } from './middle-stage-context';
+
+import { toFixed } from '@/utils';
 
 interface IResizeBarProps {
 
@@ -49,7 +53,12 @@ const ScaleOptions: DefaultOptionType[] = [
 
 export const ResizeBar: React.FC<IResizeBarProps> = function ResizeBar() {
   const [scale, setScale] = useState(100);
-  const { updateScale } = useRuler();
+  const {
+    updateScale, updateOrigin,
+  } = useRuler();
+
+  const [, setScaleCenter] = useStageScale();
+
   const middleStageRef = useContext(MiddleStageContext);
 
   const hanldeUpdateScale = useCallback((s: number) => {
@@ -58,7 +67,7 @@ export const ResizeBar: React.FC<IResizeBarProps> = function ResizeBar() {
       return;
     }
     setScale(s);
-    updateScale(s / 100);
+    updateScale(toFixed(s / 100, 3));
   }, [updateScale]);
 
   useEffect(() => {
@@ -70,15 +79,58 @@ export const ResizeBar: React.FC<IResizeBarProps> = function ResizeBar() {
         if (evt instanceof WheelEvent) {
           // 控制缩放倍数
           const newScale = Math.max(Math.min(scale + evt.deltaY, MAX_SCALE), MIN_SCALE);
+          setScaleCenter({
+            x: evt.offsetX, y: evt.offsetY,
+          });
+          // const oX = origin.x;
+          // const oY = origin.y;
+
+          // const orginOffsetX = evt.offsetX - oX;
+          // const originOffsetY = evt.offsetY - oY;
+
+          // const scaledX = orginOffsetX * ((newScale / 100) / (scale / 100));
+          // const scaledY = originOffsetY * ((newScale / 100) / (scale / 100));
+
+          // const newX = toFixed(evt.offsetX - scaledX, 3);
+          // // const newY = oY + ((evt.offsetY - oY) * (newScale / 100 - 1));
+          // const newY = toFixed(evt.offsetY - scaledY, 3);
+          // console.log(evt.offsetX);
+          // console.log({
+          //   deltaY: evt.deltaY, offsetX: evt.offsetX, oY, originOffsetY, scaledY, newY,
+          // });
+          // updateOrigin({
+          //   x: newX, y: newY,
+          // });
           // TODO: 已鼠标所在位置为中心进行缩放
-          updateScale(newScale / 100);
-          setScale(newScale);
+          hanldeUpdateScale(newScale);
         }
         evt.preventDefault();
       });
     return () => subscription.unsubscribe();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scale, updateScale]);
+  }, [hanldeUpdateScale, middleStageRef, scale, setScaleCenter, updateOrigin]);
+
+  // useEffect(() => {
+  //   const $stage = document.getElementById('pan-stage');
+  //   if (!$stage) return;
+  //   const {
+  //     left: originX, top: originY,
+  //   } = $stage.getBoundingClientRect();
+
+  //   const orginOffsetX = mouseOffset.x - originX;
+  //   const originOffsetY = mouseOffset.y - originY;
+
+  //   const scaledX = orginOffsetX * ((scale / 100) / (preScale / 100));
+  //   const scaledY = originOffsetY * ((scale / 100) / (preScale / 100));
+
+  //   const newX = toFixed(mouseOffset.x - scaledX, 3);
+  //   // const newY = oY + ((evt.offsetY - oY) * (newScale / 100 - 1));
+  //   const newY = toFixed(mouseOffset.y - scaledY, 3);
+
+  //   updateOrigin({
+  //     x: newX, y: newY,
+  //   });
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [scale, preScale, mouseOffset, updateOrigin]);
 
   return (
     <div

@@ -2,7 +2,7 @@ import { Remesh } from 'remesh';
 
 import { STAGE_DEFAULT_PADDING } from '../constants';
 
-export interface IRulerOrigin {
+export interface IRulerCooridinate {
   x: number,
   y: number,
 }
@@ -10,15 +10,15 @@ export interface IRulerOrigin {
 export const RulerDomain = Remesh.domain({
   name: 'EditorRulerDomain',
   impl(domain) {
-    const UpdateOriginEvent = domain.event<IRulerOrigin>({ name: 'UpdateOriginEvent' });
-    const UpdateScaleEvent = domain.event<number>({ name: 'UpdateScaleEvent' });
+    const UpdateOriginEvent = domain.event<[IRulerCooridinate, IRulerCooridinate]>({ name: 'UpdateOriginEvent' });
+    const UpdateScaleEvent = domain.event<[number, number]>({ name: 'UpdateScaleEvent' });
 
     const ScaleState = domain.state({
       name: 'ScaleState',
       default: 1,
     });
 
-    const OriginState = domain.state<IRulerOrigin>({
+    const OriginState = domain.state<IRulerCooridinate>({
       name: 'OriginState',
       default: {
         x: STAGE_DEFAULT_PADDING, y: STAGE_DEFAULT_PADDING,
@@ -27,17 +27,17 @@ export const RulerDomain = Remesh.domain({
 
     const UpdateScaleCommand = domain.command({
       name: 'UpdateScaleCommand',
-      impl: (_ctx, scale: number) => [
+      impl: ({ get }, scale: number) => [
+        UpdateScaleEvent([get(ScaleState()), scale]),
         ScaleState().new(scale),
-        UpdateScaleEvent(scale),
       ],
     });
 
     const UpdateOriginCommand = domain.command({
       name: 'UpdateOriginCommand',
-      impl: (_ctx, origin: IRulerOrigin) => [
+      impl: ({ get }, origin: IRulerCooridinate) => [
+        UpdateOriginEvent([get(OriginState()), origin]),
         OriginState().new(origin),
-        UpdateOriginEvent(origin),
       ],
     });
 
@@ -50,6 +50,7 @@ export const RulerDomain = Remesh.domain({
       name: 'OriginQuery',
       impl: ({ get }) => get(OriginState()),
     });
+
     return {
       query: {
         OriginQuery,
