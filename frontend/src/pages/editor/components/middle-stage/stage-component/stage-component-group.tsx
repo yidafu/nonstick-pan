@@ -1,26 +1,29 @@
 import { IComponentNode } from '@pan/common';
 import cn from 'classnames';
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { StageComponentWrapper } from './stage-component-wrapper';
 import { computeStyle } from './utils';
 
-import { useDragComponent } from '@/pages/editor/hooks/use-drag-component';
+import { useDragComponent } from '@/pages/editor/hooks/use-move-component';
 
 interface IStageComponentGroupProps {
   componentConfig: IComponentNode;
 }
 
 export const StageComponentGroup: React.FC<IStageComponentGroupProps> = function (props) {
+  const groupRef = useRef<HTMLDivElement>(null);
   const { componentConfig } = props;
-  const { id, groupId } = componentConfig;
+  const {
+    id, groupId,
+  } = componentConfig;
   const isRoot = groupId === '0';
-  const [, drapRef] = useDragComponent(id, isRoot);
+  useDragComponent(groupRef, isRoot);
   const style = computeStyle(componentConfig);
 
   return (
     <div
-      ref={drapRef}
+      ref={groupRef}
       className={cn(
         'pan-component-group absolute',
         isRoot && 'outline-dashed outline-1 outline-orange-400',

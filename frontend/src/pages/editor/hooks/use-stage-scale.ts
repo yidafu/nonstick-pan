@@ -12,8 +12,8 @@ import {
 import { EditorDomain } from '../domain';
 import { ICooridinate } from '../domain/editor-domain';
 
-import { useRuler } from './useRuler';
-import { useScreenData } from './useScreenData';
+import { useRuler } from './use-ruler';
+import { useScreenData } from './use-screen-data';
 
 import { toFixed } from '@/utils';
 

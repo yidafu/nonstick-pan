@@ -2,7 +2,7 @@ import {
   IComponent, IComponentNode,
 } from '@pan/common';
 
-import { useComponentsData } from './useComponentsData';
+import { useComponentsData } from './use-components-data';
 
 function toComonentNode(component: IComponent): IComponentNode {
   return {

@@ -1,9 +1,10 @@
 import { useDrop } from 'react-dnd';
 
 import { ReactDndTypes } from '../constants';
+
+import { useComponentsData } from './use-components-data';
+import { IComponentDragData } from './use-move-component';
 import { useUpdateComponent } from './use-update-component';
-import { useComponentsData } from './useComponentsData';
-import { IComponentDragData } from './use-drag-component';
 
 export function useDropCompnent() {
   const updateComponent = useUpdateComponent();

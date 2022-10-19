@@ -6,7 +6,7 @@ import {
   STAGE_DEFAULT_PADDING, STAGE_RULRE_WIDTH,
 } from '../constants';
 
-import { useRuler } from './useRuler';
+import { useRuler } from './use-ruler';
 
 import { toFixed } from '@/utils';
 
