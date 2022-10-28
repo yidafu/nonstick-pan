@@ -5,6 +5,7 @@ import React, { useRef } from 'react';
 import { StageComponentWrapper } from './stage-component-wrapper';
 import { computeStyle } from './utils';
 
+import { EStageSelectedType } from '@/pages/editor/domain/stage-select-module';
 import { useDragComponent } from '@/pages/editor/hooks/use-move-component';
 
 interface IStageComponentGroupProps {
@@ -29,6 +30,7 @@ export const StageComponentGroup: React.FC<IStageComponentGroupProps> = function
         isRoot && 'outline-dashed outline-1 outline-orange-400',
       )}
       data-c-id={id}
+      data-e-type={EStageSelectedType.Group}
       data-is-group
       style={style}
     >

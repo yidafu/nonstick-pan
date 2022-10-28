@@ -6,3 +6,4 @@ export * from './use-stage';
 export * from './use-components';
 export * from './use-move-component';
 export * from './use-move-stage';
+export * from './use-select-stage';

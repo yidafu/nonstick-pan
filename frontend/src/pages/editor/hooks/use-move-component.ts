@@ -21,10 +21,10 @@ export function useDragComponent(domRef: RefObject<HTMLDivElement>, canDrag = fa
   // TODO: 改成 rxjs
   useEffect(() => {
     if (!canDrag) {
-      return;
+      return () => {};
     }
     const $container = domRef.current;
-    if (!$container) return;
+    if (!$container) return () => {};
 
     let canMoveComponent = false;
     const mousePostion: IMousePosition = {
@@ -74,7 +74,7 @@ export function useDragComponent(domRef: RefObject<HTMLDivElement>, canDrag = fa
     $container.addEventListener('mousedown', handleMouseDown);
     $container.addEventListener('mousemove', handleComponentMove);
     $container.addEventListener('mouseup', handleMouseUp);
-    return (): void => {
+    return () => {
       $container.removeEventListener('mousedown', handleMouseDown);
       $container.removeEventListener('mousemove', handleComponentMove);
       $container.removeEventListener('mousedown', handleMouseUp);

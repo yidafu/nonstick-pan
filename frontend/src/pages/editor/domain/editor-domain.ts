@@ -3,6 +3,8 @@ import {
 } from '@pan/common';
 import { Remesh } from 'remesh';
 
+import { StageSelectModule } from './stage-select-module';
+
 import {
   getComponentByScreen, getScreen, updateComponent,
 } from '@/api';
@@ -33,7 +35,8 @@ export const EditorDomain = Remesh.domain({
       update(id, data) {
         return updateComponent(id as string, data);
       },
-      isEqual(_a: R, _b: R): boolean {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      isEqual(_a, _b): boolean {
         return false;
       },
     });
@@ -66,6 +69,8 @@ export const EditorDomain = Remesh.domain({
       ],
     });
 
+    /* 舞台选择组件相关状态 */
+    const PanStageSelectModule = StageSelectModule(domain, { name: 'PanStageSelectModule' });
     return {
       query: {
         ScreenResourceQuery: ScreenResourceModule.query.ResourceQuery,
@@ -76,6 +81,7 @@ export const EditorDomain = Remesh.domain({
         IsComponentsLoadingQuery: ComponentsListResourceModule.query.LoadingQuery,
 
         ScaleCenterQuery,
+        ...PanStageSelectModule.query,
       },
       command: {
         FetchSingleScreenCommand: ScreenResourceModule.command.FetchCommand,
@@ -84,6 +90,8 @@ export const EditorDomain = Remesh.domain({
         UpdateSingleComponentCommand: ComponentsListResourceModule.command.UpdateSingleCommand,
 
         UpdateScaleCenterCommand,
+
+        ...PanStageSelectModule.command,
       },
 
       event: { UpdateScaleCenterEvent },

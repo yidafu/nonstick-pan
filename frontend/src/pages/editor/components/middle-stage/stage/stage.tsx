@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 
 import { StageComponentWrapper } from '../stage-component';
 
+import { useStageClick } from './hooks/use-stage-click';
+
 import {
   useComponents, useStage,
 } from '@/pages/editor/hooks';
@@ -18,7 +20,7 @@ export const Stage: React.FC<IStageProps> = function Stage() {
 
   const { stageStyle } = useStage(stageWrapperRef, stageRef);
   useMoveStage(stageRef);
-
+  useStageClick(stageWrapperRef);
   return (
     <div
       id="stage-wrapper"
