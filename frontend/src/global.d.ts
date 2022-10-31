@@ -10,4 +10,7 @@ declare global {
      */
     ComponentManager: PanComponentManager;
   }
+
+  type Nullable<T> = T | null;
+
 }

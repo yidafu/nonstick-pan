@@ -67,7 +67,7 @@ export const StageSelectModule = (
 
   const SelectComIdListQuery = domain.query({
     name: `${options.name}.SelectComIdListQuery`,
-    impl: ({ get }) => get(SelectedTypeState()),
+    impl: ({ get }) => get(SelectComponentIdListState()),
   });
 
   return Remesh.module({

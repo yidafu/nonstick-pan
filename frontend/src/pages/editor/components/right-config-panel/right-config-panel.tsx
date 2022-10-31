@@ -12,21 +12,23 @@ interface IRightConfigPanelProps {
 }
 
 export const RightConfigPanel: React.FC<IRightConfigPanelProps> = function (props) {
-  const { selectedType } = useSelectStage();
+  const {
+    selectedType, selectedComIdList,
+  } = useSelectStage();
 
-  function renderConfigPanel(currentSelectedType: EStageSelectedType) {
+  function renderConfigPanel(currentSelectedType: EStageSelectedType, comIdList: string[]) {
     if (currentSelectedType === EStageSelectedType.Stage) {
       return <ScreenConfig />;
     }
     if (currentSelectedType === EStageSelectedType.Component) {
-      return <ComponentConfig />;
+      return <ComponentConfig componentId={comIdList[0]} />;
     }
   }
   return (
     <div
       className="w-80 p-block h-full"
     >
-      {renderConfigPanel(selectedType)}
+      {renderConfigPanel(selectedType, selectedComIdList)}
     </div>
   );
 };

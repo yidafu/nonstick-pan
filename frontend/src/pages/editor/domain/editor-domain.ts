@@ -53,13 +53,7 @@ export const EditorDomain = Remesh.domain({
       name: 'ScaleCenterQuery',
       impl: ({ get }) => get(ScaleCenterState()),
     });
-    const OneComponentQuery = domain.query({
-      name: 'OneComponentQuery',
-      impl: ({ get }, comId: string) => {
-        const components = get(ComponentsListResourceModule.query.ResourceQuery());
-        return components.find((c) => c.id === comId) ?? null;
-      },
-    });
+
 
     const UpdateScaleCenterCommand = domain.command({
       name: 'UpdateScaleCenterCommand',
@@ -77,7 +71,7 @@ export const EditorDomain = Remesh.domain({
         IsScreenLoadingQuery: ScreenResourceModule.query.LoadingQuery,
 
         ComponentsQuery: ComponentsListResourceModule.query.ResourceQuery,
-        OneComponentQuery,
+        OneComponentQuery: ComponentsListResourceModule.query.GetOneResourceByIdQuery,
         IsComponentsLoadingQuery: ComponentsListResourceModule.query.LoadingQuery,
 
         ScaleCenterQuery,

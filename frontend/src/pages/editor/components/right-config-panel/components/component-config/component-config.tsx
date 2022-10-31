@@ -1,8 +1,15 @@
 import { Tabs } from 'antd';
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import { ComponentContext } from './component-context';
+import { DataConfig } from './components/data-config';
+import { InteractionConfig } from './components/interaction-config';
+import { StyleConfig } from './components/style-config';
+
+import { useOneComponentData } from './hooks';
 
 interface IComponentConfigProps {
-
+  componentId: string;
 }
 
 export enum EComponentTabType {
@@ -11,20 +18,47 @@ export enum EComponentTabType {
   Data = 'data',
 }
 
-export const ComponentConfig: React.FC<IComponentConfigProps> = function (props) {
+export const ComponentConfig: React.FC<IComponentConfigProps> = function ComponentConfig(props) {
+  const { componentId } = props;
+  const {
+    component, updateComponentId,
+  } = useOneComponentData(componentId);
+
+  useEffect(() => {
+    updateComponentId(componentId);
+  }, [componentId, updateComponentId]);
+
   return (
     <div>
       <Tabs
         type="card"
         items={[
           {
-            label: '样式', key: EComponentTabType.Style, children: '样式配置',
+            label: '样式',
+            key: EComponentTabType.Style,
+            children: (
+              <ComponentContext.Provider value={component}>
+                <StyleConfig />
+              </ComponentContext.Provider>
+            ),
           },
           {
-            label: '交互', key: EComponentTabType.Interaction, children: '交互配置',
+            label: '交互',
+            key: EComponentTabType.Interaction,
+            children: (
+              <ComponentContext.Provider value={component}>
+                <InteractionConfig />
+              </ComponentContext.Provider>
+            ),
           },
           {
-            label: '数据', key: EComponentTabType.Data, children: '数据配置',
+            label: '数据',
+            key: EComponentTabType.Data,
+            children: (
+              <ComponentContext.Provider value={component}>
+                <DataConfig />
+              </ComponentContext.Provider>
+            ),
           },
         ]}
       />

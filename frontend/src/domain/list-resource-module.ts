@@ -37,6 +37,14 @@ export const ListResourceModule = <P, R extends { id: TIdType }>(
   } = options;
   const ResourceModuleInst = ResourceModule<P, R[]>(domain, restOption);
 
+  const GetOneResourceByIdQuery = domain.query({
+    name: `${options.name}.GetOneResourceByIdQuery`,
+    impl: ({ get }, id: string) => {
+      const list = get(ResourceModuleInst.query.ResourceQuery());
+      return list.find((item) => item.id === id) ?? null;
+    },
+  });
+
   const UpdateListResourceCommand = domain.command({
     name: `${options.name}.UpdateListResourceCommand`,
     impl({ get }, [id, partialItem]: [TIdType, Partial<R>]) {
@@ -86,6 +94,8 @@ export const ListResourceModule = <P, R extends { id: TIdType }>(
     query: {
       ResourceQuery: ResourceModuleInst.query.ResourceQuery,
       LoadingQuery: ResourceModuleInst.query.LoadingQuery,
+
+      GetOneResourceByIdQuery,
     },
     command: {
       UpdateSingleCommand,
