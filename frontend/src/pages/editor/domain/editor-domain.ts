@@ -26,7 +26,7 @@ export const EditorDomain = Remesh.domain({
       },
       default: {} as IScreen,
     });
-    const ComponentsListResourceModule = ListResourceModule<number, IComponent>(domain, {
+    const ComponentsListResource = ListResourceModule<number, IComponent>(domain, {
       name: 'EditorComponentsListResourceModule',
       default: [],
       fetch(screenId) {
@@ -54,7 +54,6 @@ export const EditorDomain = Remesh.domain({
       impl: ({ get }) => get(ScaleCenterState()),
     });
 
-
     const UpdateScaleCenterCommand = domain.command({
       name: 'UpdateScaleCenterCommand',
       impl: ({ get }, center: ICooridinate) => [
@@ -70,25 +69,28 @@ export const EditorDomain = Remesh.domain({
         ScreenResourceQuery: ScreenResourceModule.query.ResourceQuery,
         IsScreenLoadingQuery: ScreenResourceModule.query.LoadingQuery,
 
-        ComponentsQuery: ComponentsListResourceModule.query.ResourceQuery,
-        OneComponentQuery: ComponentsListResourceModule.query.GetOneResourceByIdQuery,
-        IsComponentsLoadingQuery: ComponentsListResourceModule.query.LoadingQuery,
+        ComponentsQuery: ComponentsListResource.query.ResourceQuery,
+        OneComponentQuery: ComponentsListResource.query.GetOneResourceByIdQuery,
+        IsComponentsLoadingQuery: ComponentsListResource.query.LoadingQuery,
 
         ScaleCenterQuery,
         ...PanStageSelectModule.query,
       },
       command: {
         FetchSingleScreenCommand: ScreenResourceModule.command.FetchCommand,
-        FetchComponentsCommand: ComponentsListResourceModule.command.FetchCommand,
+        FetchComponentsCommand: ComponentsListResource.command.FetchCommand,
 
-        UpdateSingleComponentCommand: ComponentsListResourceModule.command.UpdateSingleCommand,
+        UpdateSingleComponentCommand: ComponentsListResource.command.UpdateSingleCommand,
 
         UpdateScaleCenterCommand,
 
         ...PanStageSelectModule.command,
       },
 
-      event: { UpdateScaleCenterEvent },
+      event: {
+        UpdateScaleCenterEvent,
+        ...ComponentsListResource.event,
+      },
     };
   },
 });

@@ -2,15 +2,16 @@ import {
   IComponent, IComponentStyleConfig,
 } from '@pan/common';
 import get from 'lodash.get';
+import merge from 'lodash.merge';
 import set from 'lodash.set';
 import {
   useCallback, useContext, useState,
 } from 'react';
 import {
-  useRemeshDomain, useRemeshQuery, useRemeshSend,
+  useRemeshDomain, useRemeshEvent, useRemeshQuery, useRemeshSend,
 } from 'remesh-react';
 
-import { ComponentContext } from './component-context';
+import { ComponentContext } from '../../component-context';
 
 import { EditorDomain } from '@/pages/editor/domain';
 
@@ -18,6 +19,7 @@ export function useOneComponentData(comId = '0') {
   const [componentId, setComponentId] = useState(comId);
   const editorDomain = useRemeshDomain(EditorDomain());
   const component = useRemeshQuery(editorDomain.query.OneComponentQuery(componentId));
+  console.log('component', component);
   const send = useRemeshSend();
 
   const updateComponent = useCallback((cId: string, toUpdate: Partial<IComponent>) => {
@@ -28,9 +30,27 @@ export function useOneComponentData(comId = '0') {
     setComponentId(cId);
   }, []);
 
+  useRemeshEvent(editorDomain.event.UpdateSingleSuccessEvent, ([id, partialCom]) => {
+    if (id === componentId) {
+      console.log(id, partialCom);
+      // component = merge({}, component, partialCom);
+    }
+  });
   return {
     component, updateComponent, updateComponentId,
   };
+}
+
+export function useUpateCompoent() {
+  const editorDomain = useRemeshDomain(EditorDomain());
+
+  const send = useRemeshSend();
+
+  const updateComponent = useCallback(((cId: string, toUpdate: Partial<IComponent>) => {
+    send(editorDomain.command.UpdateSingleComponentCommand([cId, toUpdate]));
+  }), [editorDomain.command, send]);
+
+  return updateComponent;
 }
 
 export function useComponentStyleConfig() {

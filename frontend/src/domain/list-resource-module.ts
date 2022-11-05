@@ -35,12 +35,12 @@ export const ListResourceModule = <P, R extends { id: TIdType }>(
   const {
     update, isEqual, ...restOption
   } = options;
-  const ResourceModuleInst = ResourceModule<P, R[]>(domain, restOption);
+  const Resource = ResourceModule<P, R[]>(domain, restOption);
 
   const GetOneResourceByIdQuery = domain.query({
     name: `${options.name}.GetOneResourceByIdQuery`,
     impl: ({ get }, id: string) => {
-      const list = get(ResourceModuleInst.query.ResourceQuery());
+      const list = get(Resource.query.ResourceQuery());
       return list.find((item) => item.id === id) ?? null;
     },
   });
@@ -48,7 +48,7 @@ export const ListResourceModule = <P, R extends { id: TIdType }>(
   const UpdateListResourceCommand = domain.command({
     name: `${options.name}.UpdateListResourceCommand`,
     impl({ get }, [id, partialItem]: [TIdType, Partial<R>]) {
-      const list = get(ResourceModuleInst.query.ResourceQuery());
+      const list = get(Resource.query.ResourceQuery());
       const newList = list.map((item) => {
         if (item.id === id) {
           return merge({}, item, partialItem);
@@ -56,7 +56,7 @@ export const ListResourceModule = <P, R extends { id: TIdType }>(
         return item;
       });
       return [
-        ResourceModuleInst.command.UpdateResourceCommand(newList),
+        Resource.command.UpdateResourceCommand(newList),
         UpdateSingleSuccessEvent([id, partialItem]),
       ];
     },
@@ -92,22 +92,22 @@ export const ListResourceModule = <P, R extends { id: TIdType }>(
 
   return Remesh.module({
     query: {
-      ResourceQuery: ResourceModuleInst.query.ResourceQuery,
-      LoadingQuery: ResourceModuleInst.query.LoadingQuery,
+      ResourceQuery: Resource.query.ResourceQuery,
+      LoadingQuery: Resource.query.LoadingQuery,
 
       GetOneResourceByIdQuery,
     },
     command: {
       UpdateSingleCommand,
-      FetchCommand: ResourceModuleInst.command.FetchCommand,
+      FetchCommand: Resource.command.FetchCommand,
     },
     event: {
-      FetchEvent: ResourceModuleInst.event.FetchEvent,
-      FetchSuccessEvent: ResourceModuleInst.event.SuccessEvent,
-      ListChangedEvent: ResourceModuleInst.event.ChangedEvent,
-      FetchFailedEvent: ResourceModuleInst.event.FailedEvent,
-      LoadingStartEvent: ResourceModuleInst.event.LoadingStartEvent,
-      LoadingFinishEvent: ResourceModuleInst.event.LoadingFinishEvent,
+      FetchEvent: Resource.event.FetchEvent,
+      FetchSuccessEvent: Resource.event.SuccessEvent,
+      ListChangedEvent: Resource.event.ChangedEvent,
+      FetchFailedEvent: Resource.event.FailedEvent,
+      LoadingStartEvent: Resource.event.LoadingStartEvent,
+      LoadingFinishEvent: Resource.event.LoadingFinishEvent,
 
       UpdateSingleFailEvent,
       UpdateSingleSuccessEvent,

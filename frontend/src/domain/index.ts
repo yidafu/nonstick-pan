@@ -3,7 +3,7 @@ import { RemeshLogger } from 'remesh-logger';
 import { RemeshReduxDevtools } from 'remesh-redux-devtools';
 
 const store = Remesh.store({ inspectors: [
-  // RemeshLogger(),
+  RemeshLogger(),
   RemeshReduxDevtools(),
 ] });
 

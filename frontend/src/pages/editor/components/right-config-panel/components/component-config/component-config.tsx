@@ -6,7 +6,7 @@ import { DataConfig } from './components/data-config';
 import { InteractionConfig } from './components/interaction-config';
 import { StyleConfig } from './components/style-config';
 
-import { useOneComponentData } from './hooks';
+import { useOneComponentData } from './components/style-config/hooks';
 
 interface IComponentConfigProps {
   componentId: string;
