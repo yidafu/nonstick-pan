@@ -4,7 +4,7 @@ import {
   Entity, Column, PrimaryGeneratedColumn, UpdateDateColumn, CreateDateColumn,
 } from 'typeorm';
 
-@Entity({ name: 'vs_component' })
+@Entity({ name: 'vs_components' })
 export class ComponentEntity {
   @PrimaryGeneratedColumn({ type: 'bigint' })
     id: number;
