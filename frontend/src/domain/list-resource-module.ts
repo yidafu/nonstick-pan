@@ -1,9 +1,13 @@
-import merge from 'lodash.merge';
+import _merge from 'lodash.merge';
 import {
-  RemeshDomainContext, Remesh, RemeshAction, DomainConceptName,
+  RemeshDomainContext, Remesh, DomainConceptName,
 } from 'remesh';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import {
+  from, asyncScheduler, merge,
+} from 'rxjs';
+import {
+  switchMap, throttleTime, catchError, map,
+} from 'rxjs/operators';
 
 import { ResourceModule } from './resource-module';
 
@@ -51,7 +55,7 @@ export const ListResourceModule = <P, R extends { id: TIdType }>(
       const list = get(Resource.query.ResourceQuery());
       const newList = list.map((item) => {
         if (item.id === id) {
-          return merge({}, item, partialItem);
+          return _merge({}, item, partialItem);
         }
         return item;
       });
@@ -74,18 +78,25 @@ export const ListResourceModule = <P, R extends { id: TIdType }>(
   domain.effect({
     name: `${options.name}.UpdateSingleEffect`,
     impl({ fromEvent }) {
-      return fromEvent(UpdateSingleEvent).pipe(
-        switchMap((args) => new Observable<RemeshAction>((subscriber) => {
-          options.update(...args)
-            .then((data) => {
-              subscriber.next(UpdateListResourceCommand([args[0], data]));
-              subscriber.complete();
-            })
-            .catch((err: Error) => {
-              subscriber.next(UpdateSingleFailEvent(err?.message ?? `更新组件[${args[0]}]信息失败`));
-              subscriber.complete();
-            });
-        })),
+      const source = fromEvent(UpdateSingleEvent);
+
+      return merge(
+        source.pipe(
+        // 先更新本地状态
+          map((args) => UpdateListResourceCommand([args[0], { ...args[1] }])),
+        ),
+        // 延时更新服务断状态
+        source
+          .pipe(
+            throttleTime(1000, asyncScheduler, {
+              leading: false, trailing: true,
+            }),
+            switchMap((args) => from(options.update(...args))),
+            // 最后同步服务器状态
+            map((data) => UpdateListResourceCommand([data.id, data])),
+
+            catchError(async (err) => UpdateSingleFailEvent(err?.message ?? '更新组件信息失败')),
+          ),
       );
     },
   });
