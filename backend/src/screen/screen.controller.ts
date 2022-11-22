@@ -67,7 +67,7 @@ export class ScreenController {
 
   @Get(':screenId/components')
   @ApiTags('screen')
-  @ApiOperation({ summary: '获取大屏列表', description: '没有分页功能' })
+  @ApiOperation({ summary: '大屏的下所有组件', description: '没有分页功能' })
   @ApiQuery({
     description: '是否是模板',
     name: 'isTemplate',

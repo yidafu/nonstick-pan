@@ -11,7 +11,7 @@ async function bootstrap() {
 
   const httpAdapterHost = app.get(HttpAdapterHost);
   app.useGlobalFilters(new ExceptionTrapFilter(httpAdapterHost));
-
+  app.setGlobalPrefix('/api');
   app.enableCors();
   const config = new DocumentBuilder()
     .setTitle('Visualization Screen')

@@ -1,4 +1,4 @@
-import { IComponentIneractConfig, IComponentRequestConfig, IComponentStyleConfig } from '@pan/common';
+import { IComponentIneractConfig, IComponentRequestConfig, IComponentStyleConfig, IComponentStyleLabelGroup } from '@pan/common';
 import dayjs from 'dayjs';
 import {
   Entity, Column, PrimaryGeneratedColumn, UpdateDateColumn, CreateDateColumn,
@@ -40,6 +40,10 @@ export class ComponentEntity {
   @Column({
     name: 'style_config', type: 'json',
   }) styleConfig: IComponentStyleConfig;
+
+  @Column({
+    name: 'style_label_config', type: 'json',
+  }) styleLabelConfig: IComponentStyleLabelGroup;
 
   @Column({
     name: 'request_config', type: 'json',
