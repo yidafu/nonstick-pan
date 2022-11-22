@@ -1,0 +1,16 @@
+image: node:16.18
+
+stages:
+  - install-deps
+  - lint
+
+install-deps:
+  stage: install-deps
+  script:
+    - npm i -g pnpm
+    - pnpm i
+
+lint:
+  stage: lint
+  script:
+    - pnpm lint
