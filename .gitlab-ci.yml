@@ -12,8 +12,8 @@ stages:
 install-deps:
   stage: install-deps
   script:
-    - npm i -g pnpm
-    - pnpm i
+    - npm i -g pnpm --registry=https://registry.npmmirror.com
+    - pnpm i --registry=https://registry.npmmirror.com
 
 lint:
   stage: lint
