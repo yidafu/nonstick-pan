@@ -1,5 +1,7 @@
 import { IComponent } from '@pan/common';
-import { useRemeshDomain, useRemeshSend } from 'remesh-react';
+import {
+  useRemeshDomain, useRemeshSend,
+} from 'remesh-react';
 
 import { EditorDomain } from '../domain';
 

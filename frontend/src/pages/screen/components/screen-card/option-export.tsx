@@ -8,11 +8,12 @@ interface IOptionExportProps {
 }
 
 export const OptionExport: React.FC<IOptionExportProps> = function () {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const screen = useContext(ScreenContext);
 
   return (
     <div
-      className="flex justify-center items-center"
+      className="flex items-center justify-center"
     >
       <ExportOutlined />
       <span

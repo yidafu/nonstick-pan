@@ -7,7 +7,7 @@ interface IOptionCopyProps {
 
 }
 
-export const OptionCopy: React.FC<IOptionCopyProps> = function (props) {
+export const OptionCopy: React.FC<IOptionCopyProps> = function () {
   const screen = useContext(ScreenContext);
 
   function handleCopyScren() {
@@ -16,7 +16,7 @@ export const OptionCopy: React.FC<IOptionCopyProps> = function (props) {
 
   return (
     <div
-      className="flex justify-center items-center"
+      className="flex items-center justify-center"
       onClick={handleCopyScren}
     >
       <CopyOutlined />

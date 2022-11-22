@@ -44,6 +44,7 @@ const MoreMenu = (
 );
 
 export const MoreOption: React.FC<IMoreOptionProps> = function () {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const screen = useContext(ScreenContext);
 
   return (

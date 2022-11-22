@@ -9,7 +9,7 @@ interface IGoHomeProps {
 
 }
 
-export const GoHome: React.FC<IGoHomeProps> = function (props) {
+export const GoHome: React.FC<IGoHomeProps> = function () {
   return (
     <Link
       to={gUrl('/screens')}

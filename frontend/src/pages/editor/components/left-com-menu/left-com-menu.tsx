@@ -4,7 +4,7 @@ interface ILeftComMenuProps {
 
 }
 
-export const LeftComMenu: React.FC<ILeftComMenuProps> = function (props) {
+export const LeftComMenu: React.FC<ILeftComMenuProps> = function () {
   return (
     <div>left-com-menu</div>
   );

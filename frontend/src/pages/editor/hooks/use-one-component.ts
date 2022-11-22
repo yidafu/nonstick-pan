@@ -9,8 +9,5 @@ export function useOneComponent(comId: string) {
 
   const component = useRemeshQuery(editorDomain.query.OneComponentQuery(comId));
 
-  function update() {
-
-  }
   return component;
 }

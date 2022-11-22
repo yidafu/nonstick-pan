@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { EStageSelectedType } from '../../domain/stage-select-module';
 
 // import { Tabs } from 'antd';
@@ -11,7 +12,7 @@ interface IRightConfigPanelProps {
 
 }
 
-export const RightConfigPanel: React.FC<IRightConfigPanelProps> = function (props) {
+export const RightConfigPanel: React.FC<IRightConfigPanelProps> = function () {
   const {
     selectedType, selectedComIdList,
   } = useSelectStage();
@@ -26,7 +27,7 @@ export const RightConfigPanel: React.FC<IRightConfigPanelProps> = function (prop
   }
   return (
     <div
-      className="w-80 p-block h-full"
+      className="h-full w-80 p-block"
     >
       {renderConfigPanel(selectedType, selectedComIdList)}
     </div>

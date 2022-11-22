@@ -10,7 +10,7 @@ interface IStyleConfigProps {
 
 }
 
-export const StyleConfig: React.FC<IStyleConfigProps> = function (props) {
+export const StyleConfig: React.FC<IStyleConfigProps> = function () {
   const componentData = useContext(ComponentContext);
   if (!componentData) return null;
 

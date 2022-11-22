@@ -14,3 +14,8 @@ declare global {
   type Nullable<T> = T | null;
 
 }
+
+declare module '*.png' {
+  // eslint-disable-next-line import/no-default-export
+  export default any;
+}

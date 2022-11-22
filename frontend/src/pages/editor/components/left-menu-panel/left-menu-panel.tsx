@@ -4,10 +4,10 @@ interface ILeftMenuPanelProps {
 
 }
 
-export const LeftMenuPanel: React.FC<ILeftMenuPanelProps> = function (props) {
+export const LeftMenuPanel: React.FC<ILeftMenuPanelProps> = function () {
   return (
     <div
-      className="w-60 p-block h-full"
+      className="h-full w-60 p-block"
     />
   );
 };

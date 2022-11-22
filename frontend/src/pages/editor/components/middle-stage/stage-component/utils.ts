@@ -2,7 +2,8 @@ import {
   IComponent, IComponentNode, IPanComponentConfig,
 } from '@pan/common';
 
-export function mergeConfig(componentConfig: IComponent, panConfig: IPanComponentConfig) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function mergeConfig(componentConfig: IComponent, _panConfig: IPanComponentConfig) {
   return componentConfig;
 }
 

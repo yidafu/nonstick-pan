@@ -4,7 +4,7 @@ interface IDataConfigProps {
 
 }
 
-export const DataConfig: React.FC<IDataConfigProps> = function (props) {
+export const DataConfig: React.FC<IDataConfigProps> = function () {
   return (
     <div>data-config</div>
   );

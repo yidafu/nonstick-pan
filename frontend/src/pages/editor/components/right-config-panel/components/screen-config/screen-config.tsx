@@ -4,7 +4,7 @@ interface IScreenConfigProps {
 
 }
 
-export const ScreenConfig: React.FC<IScreenConfigProps> = function (props) {
+export const ScreenConfig: React.FC<IScreenConfigProps> = function () {
   return (
     <div>screen-config</div>
   );

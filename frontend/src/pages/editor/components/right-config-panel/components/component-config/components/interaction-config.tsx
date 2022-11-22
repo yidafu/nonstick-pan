@@ -4,7 +4,7 @@ interface IInteractionConfigProps {
 
 }
 
-export const InteractionConfig: React.FC<IInteractionConfigProps> = function (props) {
+export const InteractionConfig: React.FC<IInteractionConfigProps> = function () {
   return (
     <div>interaction-config</div>
   );

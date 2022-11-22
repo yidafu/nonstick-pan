@@ -11,14 +11,14 @@ interface IEditorPageProps {
 
 }
 
-export const EditorPage: React.FC<IEditorPageProps> = function (props) {
+export const EditorPage: React.FC<IEditorPageProps> = function () {
   const { loading } = useFetchScreen();
   return (
     <Spin spinning={loading}>
       <div>
         <TopMenu />
         <div
-          className="p-full-h flex"
+          className="flex p-full-h"
         >
           <LeftMenuPanel />
           <MiddleStage />

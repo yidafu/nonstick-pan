@@ -2,7 +2,6 @@ import {
   IComponent, IComponentStyleConfig,
 } from '@pan/common';
 import get from 'lodash.get';
-import merge from 'lodash.merge';
 import set from 'lodash.set';
 import {
   useCallback, useContext, useState,
@@ -19,7 +18,6 @@ export function useOneComponentData(comId = '0') {
   const [componentId, setComponentId] = useState(comId);
   const editorDomain = useRemeshDomain(EditorDomain());
   const component = useRemeshQuery(editorDomain.query.OneComponentQuery(componentId));
-  console.log('component', component);
   const send = useRemeshSend();
 
   const updateComponent = useCallback((cId: string, toUpdate: Partial<IComponent>) => {

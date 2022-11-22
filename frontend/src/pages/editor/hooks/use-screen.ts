@@ -1,4 +1,3 @@
-import { message } from 'antd';
 import { useEffect } from 'react';
 import {
   useRemeshDomain, useRemeshQuery, useRemeshSend,
