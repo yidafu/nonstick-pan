@@ -4,7 +4,7 @@ image: node:latest
 cache:
   key: $CI_COMMIT_REF_SLUG
   paths:
-    - .node_modules/
+    - node_modules/
 
 
 stages:
@@ -12,7 +12,7 @@ stages:
   - test
 
 lint-code-job:
-  stage: build
+  stage: lint
   script:
     - npm i -g pnpm
     - pnpm install
