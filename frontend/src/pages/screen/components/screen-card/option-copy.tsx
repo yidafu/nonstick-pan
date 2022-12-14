@@ -1,6 +1,4 @@
-import {
-  CopyOutlined,
-} from '@ant-design/icons';
+import { CopyOutlined } from '@ant-design/icons';
 import React, { useContext } from 'react';
 
 import { ScreenContext } from './screen-context';

@@ -1,4 +1,6 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter, Route, Routes,
+} from 'react-router-dom';
 import { RemeshRoot } from 'remesh-react';
 
 import { store } from './domain';

@@ -1,7 +1,9 @@
 import {
   DashOutlined, CopyOutlined, EyeOutlined, ExportOutlined, DeleteOutlined,
 } from '@ant-design/icons';
-import { Dropdown, Button, Menu } from 'antd';
+import {
+  Dropdown, Button, Menu,
+} from 'antd';
 import React, { useContext } from 'react';
 
 import { OptionCopy } from './option-copy';

@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IComponentIneractConfig, IComponentRequestConfig, IComponentStyleConfig } from '@pan/common';
 import {
   IsBoolean, IsInt, IsString, IsObject,
 } from 'class-validator';
-import { IComponentIneractConfig, IComponentRequestConfig, IComponentStyleConfig } from '@pan/common';
 
 export class CreateComponentDto {
   @ApiProperty() @IsString() name: string;

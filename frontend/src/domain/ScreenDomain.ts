@@ -42,12 +42,8 @@ export const ScreenDomain = Remesh.domain({
     });
 
     return {
-      query: {
-        AllScreenQuery,
-      },
-      command: {
-        LoadScreen: AsyncFetchScreenData.command.LoadCommand,
-      },
+      query: { AllScreenQuery },
+      command: { LoadScreen: AsyncFetchScreenData.command.LoadCommand },
     };
   },
 });

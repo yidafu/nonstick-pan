@@ -1,7 +1,6 @@
-import {
-  DeleteOutlined,
-} from '@ant-design/icons';
+import { DeleteOutlined } from '@ant-design/icons';
 import React, { useContext } from 'react';
+
 import { ScreenContext } from './screen-context';
 
 interface IOptionDeleteProps {

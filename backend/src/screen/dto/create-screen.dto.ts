@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsBoolean, IsInt, IsString } from 'class-validator';
 import { EFillType } from '@pan/common';
+import { IsBoolean, IsInt, IsString } from 'class-validator';
 
 export class CreateScreenDto {
   @ApiProperty()
