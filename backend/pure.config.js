@@ -4,7 +4,7 @@ module.exports = {
     lint: {
       presetEslint: 'node',
       eslint: {
-        entry: ['src/**/*.ts', 'test/**/*.ts'],
+        entry: ['src/**/*.ts'],
       },
       stylelint: {
         disable: true,

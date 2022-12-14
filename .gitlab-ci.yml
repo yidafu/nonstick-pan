@@ -1,0 +1,25 @@
+image: node:latest
+
+# Cache modules in between jobs
+cache:
+  key: $CI_COMMIT_REF_SLUG
+  paths:
+    - .node_modules/
+
+
+stages:
+  - lint
+  - test
+
+lint-code-job:
+  stage: build
+  script:
+    - npm i -g pnpm
+    - pnpm install
+    - pnpm lint
+
+test-code-job:
+  stage: test
+  script:
+    - pnpm i
+    - pnpm test
