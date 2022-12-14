@@ -1,8 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
-const instance = axios.create({
-  baseURL: 'http://localhost:3000',
-});
+const instance = axios.create({ baseURL: 'http://localhost:3000' });
 
 function request<T, D = any>(config: AxiosRequestConfig<D>) {
   return instance.request<T>(config)

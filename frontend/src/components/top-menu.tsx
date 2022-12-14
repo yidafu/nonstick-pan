@@ -1,4 +1,6 @@
-import { ExclamationCircleOutlined, UserOutlined, PlusCircleOutlined } from '@ant-design/icons';
+import {
+  ExclamationCircleOutlined, UserOutlined, PlusCircleOutlined,
+} from '@ant-design/icons';
 import {
   Button, Dropdown, Menu, MenuProps,
 } from 'antd';

@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { ComponentModule } from 'src/component/component.module';
 
 import { ScreenEntity } from 'src/screen/entity/screen.entity';

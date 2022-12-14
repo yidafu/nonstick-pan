@@ -1,7 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ComponentEntity } from 'src/component/entity/component.entity';
+
 import { In, Repository } from 'typeorm';
+
+import { ComponentEntity } from 'src/component/entity/component.entity';
 
 import { BatchUpdateComponentDot } from './dto/batch-update-screeen.dto';
 
@@ -12,6 +14,7 @@ import { UpdateComponentDot } from './dto/update-screeen.dto';
 @Injectable()
 export class ComponentService {
   private logger = new Logger(ComponentService.name);
+
   constructor(
     @InjectRepository(ComponentEntity) private componentRepository: Repository<ComponentEntity>,
   ) {}

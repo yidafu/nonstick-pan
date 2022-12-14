@@ -1,12 +1,10 @@
-import {
-  EyeOutlined,
-} from '@ant-design/icons';
+import { EyeOutlined } from '@ant-design/icons';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import { ScreenContext } from './screen-context';
-
 import { gUrl } from '@/utils';
+
+import { ScreenContext } from './screen-context';
 
 interface IOptionCopyProps {
 
