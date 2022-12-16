@@ -4,7 +4,7 @@ interface IEditorPageProps {
 
 }
 
-export const EditorPage: React.FC<IEditorPageProps> = function (props) {
+export const EditorPage: React.FC<IEditorPageProps> = function () {
   return (
     <div>EditorPage</div>
   );

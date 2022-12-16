@@ -2,7 +2,7 @@ import {
   ExclamationCircleOutlined, UserOutlined, PlusCircleOutlined,
 } from '@ant-design/icons';
 import {
-  Button, Dropdown, Menu, MenuProps,
+  Button, Dropdown, Menu,
 } from 'antd';
 import { ItemType } from 'antd/lib/menu/hooks/useItems';
 import React from 'react';
@@ -20,8 +20,8 @@ const menuItems: ItemType[] = [
 
 export const TopMenu: React.FC<ITopMenuProps> = function () {
   return (
-    <div className="flex h-16 p-block justify-between">
-      <div className="w-50 flex items-center">
+    <div className="flex justify-between h-16 p-block">
+      <div className="flex items-center w-50">
         <Button
           className="mx-2"
           icon={<PlusCircleOutlined size={20} />}

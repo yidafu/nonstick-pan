@@ -1,21 +1,27 @@
+/* stylelint-disable-next-line scss/at-rule-no-unknown */
 @tailwind base;
+/* stylelint-disable-next-line scss/at-rule-no-unknown */
 @tailwind components;
+/* stylelint-disable-next-line scss/at-rule-no-unknown */
 @tailwind utilities;
 
 body {
   --p-color: #18181c;
-  --p-action-color: rgba(255, 255, 255, 0.06);
+  --p-action-color: rgb(255 255 255 / 6%);
   --p-bg-color: #101014;
-  --p-border-color: rgba(255, 255, 255, 0.1);
+  --p-border-color: rgb(255 255 255 / 10%);
+
   background-color: var(--p-bg-color);
 }
 
 .p-bg {
   background-color: var(--p-bg-color);
 }
+
 .p-bg-action {
   background-color: var(--p-action-color);
 }
+
 .p-block {
   background-color: var(--p-color);
   border: 1px solid var(--p-border-color);

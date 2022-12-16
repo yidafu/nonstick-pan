@@ -1,6 +1,4 @@
-import {
-  DashOutlined, CopyOutlined, EyeOutlined, ExportOutlined, DeleteOutlined,
-} from '@ant-design/icons';
+import { DashOutlined } from '@ant-design/icons';
 import {
   Dropdown, Button, Menu,
 } from 'antd';
@@ -44,6 +42,7 @@ const MoreMenu = (
 );
 
 export const MoreOption: React.FC<IMoreOptionProps> = function () {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const screen = useContext(ScreenContext);
 
   return (

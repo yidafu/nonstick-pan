@@ -28,6 +28,7 @@ export const ScreenDomain = Remesh.domain({
 
     const AsyncFetchScreenData = AsyncModule<unknown, IScreen[]>(domain, {
       name: 'AsyncFetchScreenDataAsyncModule',
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       async load(_ctx) {
         const screens = await getAllScreen();
         return screens;
