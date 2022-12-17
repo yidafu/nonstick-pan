@@ -2,6 +2,7 @@ import * as echarts from 'echarts';
 import React, {
   useEffect, useRef,
 } from 'react';
+import './style.scss';
 
 type EChartsOption = echarts.EChartsOption;
 

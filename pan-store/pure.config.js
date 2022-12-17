@@ -46,5 +46,5 @@ module.exports = {
     },
 
   },
-  plugins: { lint: { stylelint: { entry: ['src/**/*.css'] } } },
+  plugins: { lint: { stylelint: { entry: ['src/**/*.scss'] } } },
 };
