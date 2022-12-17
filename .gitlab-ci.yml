@@ -25,7 +25,8 @@ lint-code-job:
   stage: lint
   script:
     # pnpm -r lint will cause Segmentation fault
+    # - pnpm run lint
     - cd frontend/ && pnpm lint
     - cd backend/ && pnpm lint
-    - cd comon/ && pnpm lint
+    - cd common/ && pnpm lint
     - cd pan-store/ && pnpm lint
