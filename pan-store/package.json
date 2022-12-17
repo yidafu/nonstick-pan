@@ -2,12 +2,11 @@
   "name": "@pan/store",
   "version": "1.0.0",
   "description": "component libary.",
-  "type": "module",
   "module": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Nothing To Do\"",
     "build": "npx tsc",
-    "lint": "echo \"Do Nothing\"",
+    "lint": "pure lint",
     "dev": "npx tsc --watch"
   },
   "author": "yidafu",

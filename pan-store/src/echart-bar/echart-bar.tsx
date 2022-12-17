@@ -2,6 +2,7 @@ import * as echarts from 'echarts';
 import React, {
   useEffect, useRef,
 } from 'react';
+import './style.scss';
 
 type EChartsOption = echarts.EChartsOption;
 
@@ -9,7 +10,7 @@ interface IEchartBarProps {
 
 }
 
-export const EchartBar: React.FC<IEchartBarProps> = function EchartBar(props) {
+export const EchartBar: React.FC<IEchartBarProps> = function EchartBar() {
   const refEchartDom = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

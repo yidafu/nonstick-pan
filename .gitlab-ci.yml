@@ -1,4 +1,4 @@
-image: node:latest
+image: node:16
 
 cache:
   key: $CI_COMMIT_REF_SLUG
@@ -24,8 +24,4 @@ test-code-job:
 lint-code-job:
   stage: lint
   script:
-    # pnpm -r lint will cause Segmentation fault
-    - cd frontend/ && pnpm lint
-    - cd backend/ && pnpm lint
-    - cd comon/ && pnpm lint
-    - cd pan-store/ && pnpm lint
+    - pnpm lint
