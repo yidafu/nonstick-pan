@@ -9,9 +9,7 @@ cache:
 default:
   interruptible: false
   before_script:
-    - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7
-    - pnpm install
-    - ls
+    - npm i -g pnpm && pnpm install
 
 stages:
   - lint
@@ -20,7 +18,7 @@ stages:
 lint-code-job:
   stage: lint
   script:
-    - pnpm -r lint
+    - pnpm lint
 
 test-code-job:
   stage: test
