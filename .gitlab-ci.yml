@@ -20,7 +20,7 @@ stages:
 lint-code-job:
   stage: lint
   script:
-    - pnpm lint
+    - cd frontend && pnpm lint
 
 test-code-job:
   stage: test
