@@ -21,12 +21,12 @@ export const ScreenPage: React.FC<IScreenPageProps> = function () {
     <div>
       <TopMenu />
       <div
-        className="p-full-h flex"
+        className="flex p-full-h"
       >
         <LeftMenu />
         <Spin spinning={loading}>
           <div
-            className="w-auto flex"
+            className="flex w-auto"
           >
             {screens.map((screen) => (
               <ScreenCard
