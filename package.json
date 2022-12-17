@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "pnpm -r dev",
-    "lint": "pnpm -r lint",
+    "lint": "pnpm run -r --loglevel=debug lint",
     "build": "pnpm -r build",
     "test": "pnpm -r test"
   },
