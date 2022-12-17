@@ -6,6 +6,8 @@ import 'normalize.css';
 import 'antd/dist/antd.css';
 import 'antd/dist/antd.dark.css';
 
+import './compnents-manager';
+
 import './global.css';
 
 ReactDOM

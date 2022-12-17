@@ -9,16 +9,32 @@ interface ILeftMenuProps {
 }
 const items = [
   {
-    label: <Link to={gUrl('/screens')}>所有大屏</Link>, key: 'screens',
+    label: (
+      <Link
+        to={gUrl('/screens')}
+      >
+        所有大屏
+      </Link>),
+    key: 'screens',
   }, // 菜单项务必填写 key
   {
-    label: <Link to={gUrl('/template')}>所有模板</Link>, key: 'templates',
+    label: (
+      <Link
+        to={gUrl('/template')}
+      >
+        所有模板
+      </Link>),
+    key: 'templates',
   },
 ];
-export const LeftMenu: React.FC<ILeftMenuProps> = function (props) {
+export const LeftMenu: React.FC<ILeftMenuProps> = function () {
   return (
-    <div className="w-60 p-block h-full">
-      <Menu items={items} />
+    <div
+      className="h-full w-60 p-block"
+    >
+      <Menu
+        items={items}
+      />
     </div>
   );
 };

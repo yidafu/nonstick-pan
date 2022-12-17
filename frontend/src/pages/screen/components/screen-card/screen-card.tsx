@@ -11,6 +11,7 @@ import { MoreOption } from './more-option';
 
 import { ScreenContext } from './screen-context';
 
+// eslint-disable-next-line import/extensions
 import defaultSnapshot from '@/assets/snapshot.png';
 
 interface IScreenCardProps {
@@ -20,18 +21,34 @@ interface IScreenCardProps {
 export const ScreenCard: React.FC<IScreenCardProps> = function (props) {
   const { screen } = props;
   return (
-    <ScreenContext.Provider value={screen}>
-      <div className="w-60 h-48 border-solid border border-white m-5 rounded">
-        <div className="h-3/4 flex justify-center items-center">
-          <img src={defaultSnapshot} alt="大屏截图" />
+    <ScreenContext.Provider
+      value={screen}
+    >
+      <div
+        className="h-48 m-5 border border-white border-solid rounded w-60"
+      >
+        <div
+          className="flex items-center justify-center h-3/4"
+        >
+          <img
+            src={defaultSnapshot}
+            alt="大屏截图"
+          />
         </div>
-        <div className="p-bg-action px-2 h-1/4 flex justify-between items-center">
+        <div
+          className="flex items-center justify-between px-2 p-bg-action h-1/4"
+        >
           <span>{screen.name}</span>
           <div>
-            <Link to={gUrl(`/edtior/${screen.id}`)}>
-              <Button className="mr-2" icon={<EditOutlined />} />
+            <Link
+              to={gUrl(`/editor/${screen.id}`)}
+            >
+              <Button
+                className="mr-2"
+                icon={<EditOutlined />}
+              />
             </Link>
-            <MoreOption screeId={screen.id} />
+            <MoreOption />
           </div>
         </div>
       </div>

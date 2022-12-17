@@ -5,7 +5,7 @@ interface IScreenPageProps {
 
 }
 
-export const ScreenPage: React.FC<IScreenPageProps> = function (props) {
+export const ScreenPage: React.FC<IScreenPageProps> = function () {
   return (
     <div>
       <Button />

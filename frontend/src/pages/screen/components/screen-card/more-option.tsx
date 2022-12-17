@@ -1,6 +1,4 @@
-import {
-  DashOutlined, CopyOutlined, EyeOutlined, ExportOutlined, DeleteOutlined,
-} from '@ant-design/icons';
+import { DashOutlined } from '@ant-design/icons';
 import {
   Dropdown, Button, Menu,
 } from 'antd';
@@ -37,18 +35,25 @@ const MENU_ITEMS = [
 ];
 
 interface IMoreOptionProps {
-  screeId: number;
+  // screeId: number;
 }
 const MoreMenu = (
-  <Menu items={MENU_ITEMS} />
+  <Menu
+    items={MENU_ITEMS}
+  />
 );
 
 export const MoreOption: React.FC<IMoreOptionProps> = function () {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const screen = useContext(ScreenContext);
 
   return (
-    <Dropdown overlay={MoreMenu}>
-      <Button icon={<DashOutlined />} />
+    <Dropdown
+      overlay={MoreMenu}
+    >
+      <Button
+        icon={<DashOutlined />}
+      />
     </Dropdown>
   );
 };

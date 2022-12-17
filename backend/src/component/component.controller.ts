@@ -5,6 +5,8 @@ import {
   ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags,
 } from '@nestjs/swagger';
 
+import { ResponseUtils } from '@/utils/response.utils';
+
 import { ComponentService } from './component.service';
 import { BatchUpdateComponentDot } from './dto/batch-update-screeen.dto';
 import { CreateComponentDto } from './dto/create-component.dto';
@@ -26,8 +28,8 @@ const EXAMPLE_COMPONENT_DATA = {
   offsetX: 0,
   offsetY: 0,
   zIndex: 0,
-  category: 'unkown',
-  subCategory: 'unkown',
+  category: 'unknown',
+  subCategory: 'unknown',
   styleConfig: {},
   requestConfig: {},
   interactConfig: {},
@@ -59,7 +61,7 @@ export class ComponentController {
   })
   async findAll(@Query() query: QueryComponentDto) {
     const allComponents = await this.componentSerivce.findAll(query);
-    return allComponents.map(ComponentVo.convert);
+    return ResponseUtils.success(allComponents.map(ComponentVo.convert));
   }
 
   @Get(':componentId')
@@ -80,7 +82,7 @@ export class ComponentController {
   })
   async getById(@Param('componentId') componentId: number) {
     const component = await this.componentSerivce.findById(componentId);
-    return ComponentVo.convert(component);
+    return ResponseUtils.success(ComponentVo.convert(component));
   }
 
   @Post()
@@ -96,7 +98,13 @@ export class ComponentController {
         summary: '最简单场景',
         description: '默认只需要传一个 name 字段即可',
         value: {
-          layerName: '测试组件', screenId: 1, styleConfig: {}, requestConfig: {}, interactConfig: {},
+          layerName: '测试组件',
+          screenId: 1,
+          styleConfig: {},
+          requestConfig: {},
+          interactConfig: {},
+          styleLabelConfig: [],
+          name: 'PanEchartBar',
         },
       },
     },
@@ -111,7 +119,7 @@ export class ComponentController {
   })
   async createComponent(@Body() createComponentDto: CreateComponentDto) {
     const component = await this.componentSerivce.create(createComponentDto);
-    return ComponentVo.convert(component);
+    return ResponseUtils.success(ComponentVo.convert(component));
   }
 
   @Patch('batch')
@@ -148,7 +156,7 @@ export class ComponentController {
     const components = await this.componentSerivce.findByIdList(
       updateComponentDto.map((dto) => dto.id),
     );
-    return components.map(ComponentVo.convert);
+    return ResponseUtils.success(components.map(ComponentVo.convert));
   }
 
   @Patch(':componentId')
@@ -184,7 +192,7 @@ export class ComponentController {
   ) {
     await this.componentSerivce.updataById(componentId, updateComponentDto);
     const component = await this.componentSerivce.findById(componentId);
-    return ComponentVo.convert(component);
+    return ResponseUtils.success(ComponentVo.convert(component));
   }
 
   @Delete(':componentId')
@@ -204,6 +212,6 @@ export class ComponentController {
   })
   async removeScreenById(@Param('componentId') screenId: number) {
     await this.componentSerivce.removeById(screenId);
-    return true;
+    return ResponseUtils.success(true);
   }
 }

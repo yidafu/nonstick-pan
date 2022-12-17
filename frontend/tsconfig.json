@@ -4,10 +4,13 @@
   "compilerOptions": {
     "target": "ESNext",
     "useDefineForClassFields": true,
+    "outDir": "lib",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": false,
+    "declaration": true,
+    "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,

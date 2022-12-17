@@ -1,0 +1,71 @@
+import {
+  ExclamationCircleOutlined, UserOutlined,
+} from '@ant-design/icons';
+import {
+  Button, Dropdown, Menu,
+} from 'antd';
+import { ItemType } from 'antd/lib/menu/hooks/useItems';
+import React from 'react';
+
+import { GoHome } from '@/components/go-home';
+
+import { useScreenData } from '../hooks';
+
+interface ITopMenuProps {
+
+}
+
+const menuItems: ItemType[] = [
+  {
+    label: '退出登录',
+    key: 'logout',
+  },
+];
+
+export const TopMenu: React.FC<ITopMenuProps> = function () {
+  const screen = useScreenData();
+
+  return (
+    <div
+      className="flex h-16 py-4 px-8 p-block justify-between"
+    >
+      <div
+        className="w-1/4"
+      >
+        <GoHome />
+      </div>
+      <div
+        className="w-1/2 flex items-center justify-center"
+      >
+        { screen.name }
+      </div>
+      <div
+        className="w-1/4 flex items-center justify-end"
+      >
+        <Button
+          className="mx-2"
+          type="text"
+        >
+          <ExclamationCircleOutlined
+            size={20}
+          />
+        </Button>
+        <div
+          className="ml-2 mr-10"
+        >
+          <Dropdown
+            overlay={(
+              <Menu
+                items={menuItems}
+              />
+            )}
+          >
+            <UserOutlined
+              size={20}
+            />
+          </Dropdown>
+        </div>
+      </div>
+    </div>
+  );
+};

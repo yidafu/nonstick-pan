@@ -21,7 +21,7 @@ import { ScreenModule } from './screen/screen.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'ydfhs123',
+      password: 'test1234',
       database: 'visualization_screen',
       entities: [ScreenEntity, ComponentEntity],
       logging: true,

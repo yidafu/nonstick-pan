@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'fs';
-
-import { join } from 'path';
+import { dirname, join } from 'path';
+import url from 'url';
 
 import * as yaml from 'js-yaml';
 import merge from 'lodash/merge';
@@ -15,7 +15,7 @@ const yamlConfigFilenames = ['config.default.yaml', `config.${NODE_ENV}.yaml`];
 // eslint-disable-next-line import/no-default-export
 export default (): IProjectCpnfig => yamlConfigFilenames
   .map((configFilename) => {
-    const configFilepath = join(__dirname, configFilename);
+    const configFilepath = join(dirname(url.fileURLToPath(import.meta.url)), configFilename);
     if (existsSync(configFilepath)) {
       return yaml.load(
         readFileSync(configFilepath, 'utf8'),
