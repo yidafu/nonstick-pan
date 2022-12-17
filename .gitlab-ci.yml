@@ -21,7 +21,11 @@ test-code-job:
   script:
     - pnpm test
 
-lint:
+lint-code-job:
   stage: lint
   script:
-    - pnpm lint
+    # pnpm -r lint will cause Segmentation fault
+    - cd frontend/ && pnpm lint
+    - cd backend/ && pnpm lint
+    - cd comon/ && pnpm lint
+    - cd pan-store/ && pnpm lint
