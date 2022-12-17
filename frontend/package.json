@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "pure dev",
     "build": "pure build",
-    "lint": "pure lint"
+    "lint": "npx pure lint"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
