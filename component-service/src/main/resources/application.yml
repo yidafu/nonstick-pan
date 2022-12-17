@@ -1,0 +1,15 @@
+server:
+    port: 8201
+spring:
+  application:
+    name: "PanComponentService"
+polaris:
+  namespace: pan
+  address: grpc://127.0.0.1:8091
+  discovery:
+    register:
+      enable: true
+    stat:
+      enabled: true
+      port: 28082
+
