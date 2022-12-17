@@ -3,13 +3,13 @@ import {
 } from '@pan/common';
 import { Remesh } from 'remesh';
 
-import { StageSelectModule } from './stage-select-module';
-
 import {
   getComponentByScreen, getScreen, updateComponent,
 } from '@/api';
 import { ListResourceModule } from '@/domain/list-resource-module';
 import { ResourceModule } from '@/domain/resource-module';
+
+import { StageSelectModule } from './stage-select-module';
 
 export interface ICooridinate {
   x: number,

@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
-import { ScreenEntity } from 'src/screen/entity/screen.entity';
 import { Repository } from 'typeorm';
+
+import { ScreenEntity } from 'src/screen/entity/screen.entity';
 
 import { CreateScreenDto } from './dto/create-screen.dto';
 import { QueryScreeDto } from './dto/query-screen.dto';

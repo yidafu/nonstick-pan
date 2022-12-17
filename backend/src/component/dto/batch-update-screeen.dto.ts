@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IComponentIneractConfig, IComponentRequestConfig, IComponentStyleConfig } from '@pan/common';
 import {
   IsBoolean, IsInt, IsObject, IsString,
 } from 'class-validator';
-import { IComponentIneractConfig, IComponentRequestConfig, IComponentStyleConfig } from '@pan/common';
 
 export class BatchUpdateComponentDot {
   @ApiProperty() @IsInt() id: number;

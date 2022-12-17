@@ -1,13 +1,14 @@
 import React, { useRef } from 'react';
 
-import { StageComponentWrapper } from '../stage-component';
-
-import { useStageClick } from './hooks/use-stage-click';
-
 import {
   useComponents, useStage,
 } from '@/pages/editor/hooks';
+
 import { useMoveStage } from '@/pages/editor/hooks/use-move-stage';
+
+import { StageComponentWrapper } from '../stage-component';
+
+import { useStageClick } from './hooks/use-stage-click';
 
 interface IStageProps {
 

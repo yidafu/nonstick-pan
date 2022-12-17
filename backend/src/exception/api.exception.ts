@@ -1,4 +1,3 @@
-
 export abstract class ApiException extends Error {
   get type() {
     return this.name;

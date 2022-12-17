@@ -10,13 +10,13 @@ import {
   fromEvent, interval, throttle,
 } from 'rxjs';
 
+import { toFixed } from '@/utils';
+
 import { STAGE_RULRE_WIDTH } from '../../../constants';
 
 import {
   graduatedScale, ratio,
 } from './utils';
-
-import { toFixed } from '@/utils';
 
 const DEFAULT_SHORTER_GRADUATION_LENGTH = 5;
 const DEFAULT_LONGGER_GRADUATION_LENGHT = 10;

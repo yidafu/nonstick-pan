@@ -2,10 +2,8 @@ import {
   CallHandler, ExecutionContext, Injectable, NestInterceptor,
 } from '@nestjs/common';
 import {
-  catchError, map, Observable, throwError,
+  map, Observable,
 } from 'rxjs';
-
-import { ApiException } from '@/exception/api.exception';
 
 @Injectable()
 export class ResponseFormatInterceptor implements NestInterceptor {
@@ -17,7 +15,8 @@ export class ResponseFormatInterceptor implements NestInterceptor {
     return next.handle().pipe(
       map((data: any) => {
         console.log(data);
-        return ({ data, code: 0, msg: 'ok' })}),
+        return ({ data, code: 0, msg: 'ok' });
+      }),
     );
   }
 }

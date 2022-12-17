@@ -4,13 +4,13 @@ import {
 } from 'react';
 
 import {
-  STAGE_DEFAULT_PADDING, STAGE_RULRE_WIDTH,
-} from '../constants';
-
-import {
   useRuler, useScreenData,
 } from '@/pages/editor/hooks';
 import { toFixed } from '@/utils';
+
+import {
+  STAGE_DEFAULT_PADDING, STAGE_RULRE_WIDTH,
+} from '../constants';
 
 export function useStage(
   stageWrapperRef: RefObject<HTMLDivElement>,

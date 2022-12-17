@@ -5,6 +5,8 @@ import {
   useRemeshSend, useRemeshDomain, useRemeshQuery,
 } from 'remesh-react';
 
+import { toFixed } from '@/utils';
+
 import {
   STAGE_DEFAULT_PADDING, STAGE_RULRE_WIDTH,
 } from '../constants';
@@ -14,8 +16,6 @@ import { ICooridinate } from '../domain/editor-domain';
 
 import { useRuler } from './use-ruler';
 import { useScreenData } from './use-screen-data';
-
-import { toFixed } from '@/utils';
 
 export function useStageScale(): [ICooridinate, (center: ICooridinate) => void] {
   const {

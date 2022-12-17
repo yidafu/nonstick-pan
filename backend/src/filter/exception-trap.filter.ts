@@ -7,7 +7,6 @@ import { IBaseResponase } from '@pan/common';
 
 import { ApiException } from '@/exception/api.exception';
 
-
 @Catch()
 export class ExceptionTrapFilter implements ExceptionFilter {
   constructor(private readonly httpAdapterHost: HttpAdapterHost) { }

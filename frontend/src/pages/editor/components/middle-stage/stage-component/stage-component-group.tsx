@@ -2,11 +2,12 @@ import { IComponentNode } from '@pan/common';
 import cn from 'classnames';
 import React, { useRef } from 'react';
 
+import { EStageSelectedType } from '@/pages/editor/domain/stage-select-module';
+
+import { useDragComponent } from '@/pages/editor/hooks/use-move-component';
+
 import { StageComponentWrapper } from './stage-component-wrapper';
 import { computeStyle } from './utils';
-
-import { EStageSelectedType } from '@/pages/editor/domain/stage-select-module';
-import { useDragComponent } from '@/pages/editor/hooks/use-move-component';
 
 interface IStageComponentGroupProps {
   componentConfig: IComponentNode;

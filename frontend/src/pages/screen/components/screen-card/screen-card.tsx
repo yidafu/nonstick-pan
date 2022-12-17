@@ -5,14 +5,14 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
+import { gUrl } from '@/utils';
+
 import { MoreOption } from './more-option';
 
 import { ScreenContext } from './screen-context';
 
 // eslint-disable-next-line import/extensions
 import defaultSnapshot from '@/assets/snapshot.png';
-
-import { gUrl } from '@/utils';
 
 interface IScreenCardProps {
   screen: IScreen,

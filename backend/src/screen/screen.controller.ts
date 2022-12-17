@@ -5,6 +5,8 @@ import {
   ApiBody, ApiOperation, ApiParam, ApiQuery, ApiResponse, ApiTags,
 } from '@nestjs/swagger';
 
+import { ResponseUtils } from '@/utils/response.utils';
+
 import { ComponentService } from '../component/component.service';
 import { ComponentVo } from '../component/vo/component.vo';
 
@@ -13,8 +15,6 @@ import { QueryScreeDto } from './dto/query-screen.dto';
 import { UpdateScreenDot } from './dto/update-screeen.dto';
 import { ScreenService } from './screen.service';
 import { ScreenVo } from './vo/screen.vo';
-
-import { ResponseUtils } from '@/utils/response.utils';
 
 @Controller('screen')
 export class ScreenController {

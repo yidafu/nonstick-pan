@@ -2,13 +2,13 @@ import {
   RefObject, useEffect,
 } from 'react';
 
+import { toFixed } from '@/utils';
+
 import {
   STAGE_DEFAULT_PADDING, STAGE_RULRE_WIDTH,
 } from '../constants';
 
 import { useRuler } from './use-ruler';
-
-import { toFixed } from '@/utils';
 
 export function useMoveStage(stageRef: RefObject<HTMLDivElement>) {
   const { updateOrigin } = useRuler();

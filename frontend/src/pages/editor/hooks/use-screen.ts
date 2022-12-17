@@ -3,9 +3,9 @@ import {
   useRemeshDomain, useRemeshQuery, useRemeshSend,
 } from 'remesh-react';
 
-import { useScreenId } from './use-screen-id';
-
 import { EditorDomain } from '@/pages/editor/domain';
+
+import { useScreenId } from './use-screen-id';
 
 export function useFetchScreen() {
   const screenId = useScreenId();

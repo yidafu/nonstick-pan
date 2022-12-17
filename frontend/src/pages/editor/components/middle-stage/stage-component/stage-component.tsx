@@ -4,12 +4,12 @@ import React, {
   useCallback, useRef,
 } from 'react';
 
-import { computeStyle } from './utils';
-
 import { ComponentManager } from '@/compnents-manager';
 import { EStageSelectedType } from '@/pages/editor/domain/stage-select-module';
 import { useSelectStage } from '@/pages/editor/hooks';
 import { useDragComponent } from '@/pages/editor/hooks/use-move-component';
+
+import { computeStyle } from './utils';
 
 interface IStageComponentProps {
   componentConfig: IComponentNode;

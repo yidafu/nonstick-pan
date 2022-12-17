@@ -5,14 +5,14 @@ import {
   ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags,
 } from '@nestjs/swagger';
 
+import { ResponseUtils } from '@/utils/response.utils';
+
 import { ComponentService } from './component.service';
 import { BatchUpdateComponentDot } from './dto/batch-update-screeen.dto';
 import { CreateComponentDto } from './dto/create-component.dto';
 import { QueryComponentDto } from './dto/query-component.dto';
 import { UpdateComponentDot } from './dto/update-screeen.dto';
 import { ComponentVo } from './vo/component.vo';
-
-import { ResponseUtils } from '@/utils/response.utils';
 
 const EXAMPLE_COMPONENT_DATA = {
   id: '1',

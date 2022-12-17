@@ -9,13 +9,13 @@ import {
   fromEvent, interval, throttle,
 } from 'rxjs';
 
+import { toFixed } from '@/utils';
+
 import { useRuler } from '../../hooks';
 
 import { useStageScale } from '../../hooks/use-stage-scale';
 
 import { MiddleStageContext } from './middle-stage-context';
-
-import { toFixed } from '@/utils';
 
 interface IResizeBarProps {
 

@@ -1,13 +1,13 @@
 import { Spin } from 'antd';
 import React from 'react';
 
+import { TopMenu } from '@/components/top-menu';
+
 import { LeftMenu } from './components/left-menu';
 
 import { ScreenCard } from './components/screen-card/screen-card';
 
 import { useScreens } from './hooks/useScreens';
-
-import { TopMenu } from '@/components/top-menu';
 
 interface IScreenPageProps {
 

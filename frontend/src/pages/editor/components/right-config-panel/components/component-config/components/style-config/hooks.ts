@@ -10,9 +10,9 @@ import {
   useRemeshDomain, useRemeshEvent, useRemeshQuery, useRemeshSend,
 } from 'remesh-react';
 
-import { ComponentContext } from '../../component-context';
-
 import { EditorDomain } from '@/pages/editor/domain';
+
+import { ComponentContext } from '../../component-context';
 
 export function useOneComponentData(comId = '0') {
   const [componentId, setComponentId] = useState(comId);

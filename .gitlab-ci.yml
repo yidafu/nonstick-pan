@@ -1,19 +1,25 @@
-image: node:16.18
+image: node:latest
+
 cache:
   key: $CI_COMMIT_REF_SLUG
   paths:
     - node_modules/
     - .eslintcache
 
-stages:
-  - install-deps
-  - lint
+default:
+  interruptible: false
+  before_script:
+    - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7
+    - pnpm install --registry=https://registry.npmmirror.com
 
-install-deps:
-  stage: install-deps
+stages:
+  - lint
+  - test
+
+test-code-job:
+  stage: test
   script:
-    - npm i -g pnpm --registry=https://registry.npmmirror.com
-    - pnpm i --registry=https://registry.npmmirror.com
+    - pnpm test
 
 lint:
   stage: lint
