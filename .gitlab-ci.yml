@@ -10,7 +10,8 @@ default:
   interruptible: false
   before_script:
     - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7
-    # - pnpm config set store-dir ~/.pnpm-store
+    - pnpm install
+    - ls
 
 stages:
   - lint
@@ -19,11 +20,9 @@ stages:
 lint-code-job:
   stage: lint
   script:
-    - pnpm install
     - pnpm lint
 
 test-code-job:
   stage: test
   script:
-    - pnpm install
     - pnpm test
